@@ -20,4 +20,10 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  {
+    // Server-side: the Vercel function, its helpers, and the Vite config all run
+    // in Node and legitimately reach for `process`.
+    files: ['api/**/*.js', 'vite.config.js'],
+    languageOptions: { globals: globals.node },
+  },
 ])

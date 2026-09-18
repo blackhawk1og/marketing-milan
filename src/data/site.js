@@ -14,6 +14,21 @@ export const SERVICE_LINKS = [
   { to: '/services#web-development', label: 'Web Development' },
 ]
 
+/**
+ * Options for the contact form's service picker. Shared with the send endpoint
+ * (api/_lib/templates.js), which maps the submitted slug back to a readable
+ * label for the notification email.
+ */
+export const SERVICE_OPTIONS = [
+  { value: '', label: 'Not sure yet' },
+  { value: 'social', label: 'Social Media' },
+  { value: 'meta-ads', label: 'Meta Ads' },
+  { value: 'ppc', label: 'PPC' },
+  { value: 'email', label: 'Email Marketing' },
+  { value: 'web', label: 'Web Development' },
+  { value: 'multiple', label: 'A few of these together' },
+]
+
 export const CONTACT = {
   phone: '+977 982-3058082',
   phoneHref: 'tel:+9779823058082',

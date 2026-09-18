@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Secrets — .env holds the Resend API key. Keep the example committed.
+.env
+.env.*
+!.env.example
+.vercel
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

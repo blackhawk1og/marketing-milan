@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom'
 
 // Each variant carries its own border-color: a shared `border-transparent` in
 // BASE would out-order the variant's color in the generated stylesheet.
+// The `disabled:` utilities carry a :disabled pseudo-class, so they out-specify
+// the base `cursor-pointer` / `hover:` rules regardless of stylesheet order.
 const BASE =
-  'inline-flex items-center gap-[0.5em] font-body text-[0.95rem] font-bold px-[1.6em] py-[0.85em] rounded-full border-[1.5px] cursor-pointer whitespace-nowrap transition-[transform,background-color,color,border-color] duration-[250ms] ease-brand hover:-translate-y-0.5'
+  'inline-flex items-center gap-[0.5em] font-body text-[0.95rem] font-bold px-[1.6em] py-[0.85em] rounded-full border-[1.5px] cursor-pointer whitespace-nowrap transition-[transform,background-color,color,border-color] duration-[250ms] ease-brand hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0'
 
 const VARIANTS = {
   gold: 'border-transparent bg-gold-500 text-ink-950 hover:bg-gold-400',
