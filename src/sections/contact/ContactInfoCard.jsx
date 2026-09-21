@@ -23,7 +23,7 @@ function Line({ icon, children }) {
 
 export default function ContactInfoCard() {
   return (
-    <div className="rounded-brand-lg bg-forest-950 p-9 text-cream-100">
+    <div className="rounded-brand-lg bg-forest-950 p-[49px] text-cream-100">
       <Heading as="h3" size="h3" className="text-white">
         Direct contact
       </Heading>

@@ -1,5 +1,5 @@
 import { Resend } from 'resend'
-import { validate } from './validate.js'
+import { validate } from '../../src/lib/contactValidation.js'
 import { autoReplyEmail, notificationEmail } from './templates.js'
 
 /**
@@ -24,7 +24,7 @@ export async function handleContact(payload, env) {
       body: {
         ok: false,
         errors: result.errors,
-        message: 'Please check the highlighted fields and try again.',
+        message: 'Almost there — a couple of fields need a second look.',
       },
     }
   }

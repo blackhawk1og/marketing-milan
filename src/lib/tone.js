@@ -16,8 +16,10 @@ export const isDarkTone = (tone) => tone !== 'cream'
 /** Headings went white on both dark tones; on cream they inherit ink-900. */
 export const headingTone = (tone) => (isDarkTone(tone) ? 'text-white' : '')
 
+// On cream the lede is a near-black at ~68% alpha. The dark tones keep their
+// light colour — #12100CAD on the ink-950 background would be unreadable.
 export const ledeTone = (tone) =>
-  isDarkTone(tone) ? 'text-cream-100/72' : 'text-gold-600'
+  isDarkTone(tone) ? 'text-cream-100/72' : 'text-[#12100CAD]'
 
 /** Only `.on-dark` lifted the eyebrow/accent to gold-400 — `.on-ink` did not. */
 export const eyebrowTone = (tone) =>

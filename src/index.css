@@ -90,6 +90,47 @@
     0%, 20%   { transform: translate(-140%, 140%); }
     60%, 100% { transform: translate(140%, -140%); }
   }
+
+  /* ---------- Contact confirmation toast ----------
+     One shorthand drives both halves: it slides in, holds, then fades out just
+     before the 5s timer unmounts it, so the exit is never cut off. Keep the
+     4.65s + 0.35s total in step with TOAST_DURATION in ContactForm.jsx.
+     The `-calm` pair is the same timing without movement, applied through the
+     `motion-reduce:` variant. */
+  --animate-toast: toastIn 0.3s var(--ease-brand),
+    toastOut 0.35s var(--ease-brand) 4.65s forwards;
+  --animate-toast-calm: toastFadeIn 0.3s var(--ease-brand),
+    toastFadeOut 0.35s var(--ease-brand) 4.65s forwards;
+
+  @keyframes toastIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes toastOut {
+    to { opacity: 0; transform: translateY(12px) scale(0.98); }
+  }
+  @keyframes toastFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes toastFadeOut {
+    to { opacity: 0; }
+  }
+
+  /* ---------- Invalid-field nudge ----------
+     Fired once per failed submit. Reduced motion is handled at the call site
+     with `motion-reduce:animate-none`, never by redefining these keyframes in a
+     media query — Tailwind emits @theme keyframes last, so such an override
+     would silently lose. */
+  --animate-nudge: nudge 0.4s var(--ease-brand);
+
+  @keyframes nudge {
+    0%, 100% { transform: translateX(0); }
+    20%      { transform: translateX(-5px); }
+    40%      { transform: translateX(5px); }
+    60%      { transform: translateX(-3px); }
+    80%      { transform: translateX(2px); }
+  }
 }
 
 /* Global element defaults that have no JSX element to carry utilities. */

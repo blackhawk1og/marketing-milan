@@ -15,18 +15,19 @@ export const SERVICE_LINKS = [
 ]
 
 /**
- * Options for the contact form's service picker. Shared with the send endpoint
- * (api/_lib/templates.js), which maps the submitted slug back to a readable
- * label for the notification email.
+ * Choices behind the contact form's "How can we help you?" chips. Shared with
+ * the send endpoint (api/_lib/), which filters the submitted slugs against this
+ * list and maps them to readable labels for the notification email.
+ *
+ * Selecting none is how a visitor says "not sure" — the email then reads
+ * "Not specified".
  */
-export const SERVICE_OPTIONS = [
-  { value: '', label: 'Not sure yet' },
+export const SERVICE_CHOICES = [
   { value: 'social', label: 'Social Media' },
   { value: 'meta-ads', label: 'Meta Ads' },
   { value: 'ppc', label: 'PPC' },
   { value: 'email', label: 'Email Marketing' },
   { value: 'web', label: 'Web Development' },
-  { value: 'multiple', label: 'A few of these together' },
 ]
 
 export const CONTACT = {

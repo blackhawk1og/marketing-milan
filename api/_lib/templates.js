@@ -1,4 +1,4 @@
-import { SERVICE_OPTIONS } from '../../src/data/site.js'
+import { SERVICE_CHOICES } from '../../src/data/site.js'
 
 /**
  * Email bodies for the contact endpoint.
@@ -26,11 +26,18 @@ export function escapeHtml(value) {
     .replaceAll("'", '&#39;')
 }
 
-/** Maps the submitted slug to its label. Unknown values are never echoed back. */
-export function serviceLabel(slug) {
-  if (!slug) return 'Not specified'
-  const match = SERVICE_OPTIONS.find((option) => option.value === slug)
-  return match && match.value ? match.label : 'Not specified'
+/**
+ * Turns the selected slugs into a readable list. Validation has already dropped
+ * anything unrecognised, and the lookup here means an unknown value could never
+ * be echoed into the email even if it had not.
+ */
+export function serviceLabels(slugs) {
+  if (!Array.isArray(slugs) || slugs.length === 0) return 'Not specified'
+  const labels = slugs
+    .map((slug) => SERVICE_CHOICES.find((choice) => choice.value === slug))
+    .filter(Boolean)
+    .map((choice) => choice.label)
+  return labels.length > 0 ? labels.join(', ') : 'Not specified'
 }
 
 const shell = (inner) => `<!doctype html>
@@ -52,7 +59,7 @@ const row = (label, value) => `
 
 /** Sent to the site owner. `replyTo` on the send makes a reply go to the visitor. */
 export function notificationEmail(fields) {
-  const service = serviceLabel(fields.service)
+  const services = serviceLabels(fields.services)
   const subject = fields.business
     ? `New enquiry from ${fields.name} — ${fields.business}`
     : `New enquiry from ${fields.name}`
@@ -65,8 +72,9 @@ export function notificationEmail(fields) {
       </td>
     </tr>
     ${row('Email', fields.email)}
+    ${row('Phone', fields.phone || 'Not given')}
     ${row('Business', fields.business || 'Not given')}
-    ${row('Service', service)}
+    ${row('Can help with', services)}
     <tr>
       <td style="padding:18px 32px 28px;">
         <div style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:${COLORS.gold};font-weight:700;">Message</div>
@@ -82,9 +90,10 @@ export function notificationEmail(fields) {
   const text = [
     `New enquiry from ${fields.name}`,
     '',
-    `Email:    ${fields.email}`,
-    `Business: ${fields.business || 'Not given'}`,
-    `Service:  ${service}`,
+    `Email:     ${fields.email}`,
+    `Phone:     ${fields.phone || 'Not given'}`,
+    `Business:  ${fields.business || 'Not given'}`,
+    `Can help with: ${services}`,
     '',
     'Message:',
     fields.message,

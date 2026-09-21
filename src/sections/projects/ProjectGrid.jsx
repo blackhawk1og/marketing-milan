@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import ProjectCard from './ProjectCard'
+import ChoiceChip from '../../components/ui/ChoiceChip'
 import Container from '../../components/ui/Container'
 import NoteBox from '../../components/ui/NoteBox'
 import Section from '../../components/ui/Section'
 import { PROJECTS, PROJECT_FILTERS } from '../../data/projects'
-
-const FILTER_BASE =
-  'cursor-pointer rounded-full border-[1.5px] px-[1.3em] py-[0.6em] font-body text-[0.85rem] font-bold transition-all duration-200 ease-brand'
 
 export default function ProjectGrid() {
   const [filter, setFilter] = useState('all')
@@ -20,19 +18,13 @@ export default function ProjectGrid() {
       <Container>
         <div className="mb-10 flex flex-wrap gap-2.5">
           {PROJECT_FILTERS.map(({ id, label }) => (
-            <button
+            <ChoiceChip
               key={id}
-              type="button"
+              selected={filter === id}
               onClick={() => setFilter(id)}
-              aria-pressed={filter === id}
-              className={`${FILTER_BASE} ${
-                filter === id
-                  ? 'border-forest-950 bg-forest-950 text-white'
-                  : 'border-ink-950/16 bg-transparent text-ink-700 hover:border-forest-900 hover:text-forest-950'
-              }`}
             >
               {label}
-            </button>
+            </ChoiceChip>
           ))}
         </div>
 
