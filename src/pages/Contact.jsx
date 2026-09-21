@@ -1,33 +1,19 @@
-import contactImg from '../assets/img/contact.png'
 import Container from '../components/ui/Container'
-import Eyebrow from '../components/ui/Eyebrow'
-import Heading from '../components/ui/Heading'
-import Lede from '../components/ui/Lede'
-import PageHero from '../components/ui/PageHero'
 import Section from '../components/ui/Section'
 import ContactForm from '../sections/contact/ContactForm'
-import ContactInfoCard from '../sections/contact/ContactInfoCard'
+import ContactIntro from '../sections/contact/ContactIntro'
 import Faq from '../sections/contact/Faq'
 
 export default function Contact() {
   return (
     <>
-      <PageHero image={contactImg} alt="Get in touch" blob="none">
-        <Eyebrow>Contact</Eyebrow>
-        <Heading as="h1" size="xl" className="max-w-[640px]">
-          Let&apos;s build something that fits.
-        </Heading>
-        <Lede className="max-w-[640px]">
-          Tell me about your business and what you&apos;re trying to grow. I
-          reply personally, usually within a day.
-        </Lede>
-      </PageHero>
-
-      <Section>
+      {/* Tighter top than the standard section so the whole form, Submit
+          included, fits on a laptop screen without scrolling. */}
+      <Section className="pt-20">
         <Container>
-          <div className="grid grid-cols-1 items-start gap-14 gt900:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid grid-cols-1 items-start gap-14 gt900:grid-cols-[0.85fr_1.15fr] gt900:gap-20">
+            <ContactIntro />
             <ContactForm />
-            <ContactInfoCard />
           </div>
         </Container>
       </Section>

@@ -81,7 +81,7 @@ function glide(frame, to) {
  * The number and +/− stay put. The frame's height glides between the two
  * states' measured heights, so rows below slide rather than jump.
  */
-export default function ServiceRow({ id, num, title, lede, tags, open, onToggle }) {
+export default function ServiceRow({ id, num, title, lede, tags, open, instant, onToggle }) {
   const triggerId = `${id}-trigger`
   const panelId = `${id}-panel`
 
@@ -115,14 +115,18 @@ export default function ServiceRow({ id, num, title, lede, tags, open, onToggle 
     const collapsedH = headRef.current.offsetHeight
     const expandedH = panel.offsetHeight
 
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Jump straight to the resting state (the resting classes are already applied).
+    if (instant || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      running(frame, 'glide').forEach((a) => a.cancel())
+      running(title, 'swap').forEach((a) => a.cancel())
+      running(panel, 'swap').forEach((a) => a.cancel())
       frame.style.height = `${open ? expandedH : collapsedH}px`
       return
     }
     glide(frame, open ? expandedH : collapsedH)
     if (open) sequence(title, shift(collapsedH), panel, shift(-expandedH))
     else sequence(panel, shift(-expandedH), title, shift(collapsedH))
-  }, [open])
+  }, [open, instant])
 
   return (
     <li id={id} className="group/row scroll-mt-28 border-b border-ink-950/10">

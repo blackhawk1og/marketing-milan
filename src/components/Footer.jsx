@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
-import { InstagramIcon, PhoneIcon } from './Icons'
+import { FacebookIcon, InstagramIcon, PhoneIcon } from './Icons'
 import { CONTACT, NAV_LINKS, SERVICE_LINKS } from '../data/site'
 
 const COL_LINK =
@@ -37,6 +37,15 @@ export default function Footer() {
               className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
             >
               <InstagramIcon className="h-4 w-4" />
+            </a>
+            <a
+              href={CONTACT.facebook}
+              target="_blank"
+              rel="noopener"
+              aria-label="Facebook"
+              className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
+            >
+              <FacebookIcon className="h-4 w-4" />
             </a>
             <a
               href={CONTACT.phoneHref}

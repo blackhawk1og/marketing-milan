@@ -6,9 +6,12 @@ import Footer from './Footer'
 /**
  * The static mockup got this for free from full page loads: land at the top on
  * navigation, jump to the anchor when the URL carries one (e.g. /services#ppc).
+ *
+ * `key` changes on every click, even a link to the page you are already on, so
+ * that case behaves like a reload too: the logo on Home returns to the top.
  */
 function useHashScroll() {
-  const { pathname, hash } = useLocation()
+  const { pathname, hash, key } = useLocation()
 
   useEffect(() => {
     if (hash) {
@@ -19,7 +22,7 @@ function useHashScroll() {
       }
     }
     window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [pathname, hash])
+  }, [pathname, hash, key])
 }
 
 export default function Layout() {

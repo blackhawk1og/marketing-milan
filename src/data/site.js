@@ -36,6 +36,7 @@ export const CONTACT = {
   whatsapp: 'https://wa.me/9779823058082',
   instagram: 'https://instagram.com/milansunuwar.digitalmarketing',
   instagramHandle: '@milansunuwar.digitalmarketing',
+  facebook: 'https://www.facebook.com/1231289910062011',
   email: 'hello@milansunuwar.com',
   emailHref: 'mailto:hello@milansunuwar.com',
   location: 'Nepal · Remote-friendly worldwide',

@@ -19,6 +19,9 @@ export default function ServiceList() {
   const { hash } = useLocation()
   // One item open at a time. All start collapsed unless a deep link names one.
   const [openId, setOpenId] = useState(() => serviceFromHash(hash))
+  // Link-driven changes skip the animation: Layout scrolls to the row straight
+  // away, and a row above it still animating shut would move the target mid-scroll.
+  const [instant, setInstant] = useState(false)
 
   // Nav/footer links to another service change only the hash while this page
   // stays mounted. Syncing during render (not in an effect) opens the item
@@ -27,7 +30,10 @@ export default function ServiceList() {
   if (hash !== prevHash) {
     setPrevHash(hash)
     const id = serviceFromHash(hash)
-    if (id) setOpenId(id)
+    if (id) {
+      setOpenId(id)
+      setInstant(true)
+    }
   }
 
   return (
@@ -48,9 +54,11 @@ export default function ServiceList() {
               key={service.id}
               {...service}
               open={openId === service.id}
-              onToggle={() =>
+              instant={instant}
+              onToggle={() => {
+                setInstant(false)
                 setOpenId((current) => (current === service.id ? null : service.id))
-              }
+              }}
             />
           ))}
         </ul>
