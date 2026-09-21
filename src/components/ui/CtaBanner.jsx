@@ -10,8 +10,8 @@ export default function CtaBanner({ eyebrow, title, lede, children }) {
         className="absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(217,164,65,.25),transparent_55%)]"
       />
       <div className="relative z-[1]">
-        <Eyebrow className="justify-center">{eyebrow}</Eyebrow>
-        <Heading size="lg" className="text-white">
+        <Eyebrow className="reveal justify-center">{eyebrow}</Eyebrow>
+        <Heading size="lg" className="reveal text-white">
           {title}
         </Heading>
         {lede && <Lede className="mx-auto max-w-[520px]">{lede}</Lede>}

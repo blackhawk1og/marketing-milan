@@ -34,7 +34,7 @@ export default function ProjectGrid() {
           ))}
         </div>
 
-        <NoteBox className="mt-12">
+        <NoteBox className="reveal mt-12">
           <strong>Note:</strong> The projects above are illustrative sample work
           created to show how these services come together — not existing client
           accounts.

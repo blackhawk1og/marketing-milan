@@ -1,7 +1,8 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
+import { revealOnScroll } from '../lib/reveal'
 
 /**
  * The static mockup got this for free from full page loads: land at the top on
@@ -32,9 +33,22 @@ function useHashScroll() {
   }, [pathname, hash, key])
 }
 
-/** `pageRef` is what the page transition moves: the content and footer, not the header. */
-export default function Layout({ pageRef }) {
+/**
+ * `pageRef` is what the page transition moves: the content and footer, not the
+ * header. `leaving` is true while that page animates out.
+ */
+export default function Layout({ pageRef, leaving }) {
+  const { pathname } = useLocation()
   useHashScroll()
+
+  // After the new page has been scrolled into place (the layout effect above).
+  // The page may still be rising in, so its offset is discounted. A page on its
+  // way out stops revealing: it is fading, and its drift would trip the line.
+  useEffect(() => {
+    if (leaving) return undefined
+    const page = pageRef.current
+    return revealOnScroll(page, new DOMMatrix(getComputedStyle(page).transform).m42)
+  }, [pathname, leaving, pageRef])
 
   return (
     <>

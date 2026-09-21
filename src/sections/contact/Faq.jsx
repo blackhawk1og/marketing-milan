@@ -31,14 +31,14 @@ export default function Faq() {
     <Section className="flow-root pt-0">
       <Container>
         <SectionHead>
-          <Eyebrow>Before you reach out</Eyebrow>
-          <Heading size="lg">A few common questions.</Heading>
+          <Eyebrow className="reveal">Before you reach out</Eyebrow>
+          <Heading size="lg" className="reveal">A few common questions.</Heading>
         </SectionHead>
         <div className="max-w-[760px]">
           {FAQS.map(({ q, a }) => (
             <details
               key={q}
-              className="group border-b border-ink-950/12 py-[18px]"
+              className="reveal group border-b border-ink-950/12 py-[18px]"
             >
               <summary className={SUMMARY}>{q}</summary>
               <p className="mt-3 text-pretty text-ink-700">{a}</p>

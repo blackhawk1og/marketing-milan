@@ -12,8 +12,8 @@ export default function FeaturedProjects() {
       <Container>
         <div className="mb-10 flex max-w-none flex-wrap items-end justify-between gap-5">
           <div>
-            <Eyebrow>Recent work</Eyebrow>
-            <Heading size="lg" flush>
+            <Eyebrow className="reveal">Recent work</Eyebrow>
+            <Heading size="lg" flush className="reveal">
               A few products I&apos;ve helped grow.
             </Heading>
           </div>

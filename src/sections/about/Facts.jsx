@@ -24,7 +24,7 @@ export default function Facts() {
           {FACTS.map(({ title, blurb }) => (
             <div
               key={title}
-              className="rounded-brand-md border border-ink-950/8 bg-cream-100 p-6"
+              className="reveal rounded-brand-md border border-ink-950/8 bg-cream-100 p-6"
             >
               <h4 className="mb-[0.4em] font-body text-[0.95rem] font-extrabold leading-[1.08] tracking-[-0.01em] text-balance text-forest-950">
                 {title}

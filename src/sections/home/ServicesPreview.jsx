@@ -13,9 +13,9 @@ export default function ServicesPreview() {
     <Section id="services-preview">
       <Container>
         <SectionHead>
-          <Eyebrow>What I do</Eyebrow>
-          <Heading size="lg">Five ways to grow, one strategy behind them.</Heading>
-          <Lede>
+          <Eyebrow className="reveal">What I do</Eyebrow>
+          <Heading size="lg" className="reveal">Five ways to grow, one strategy behind them.</Heading>
+          <Lede className="reveal">
             Every service is built to work on its own — or stack together into a
             system where your ads, content, emails and site all point the same
             direction.
@@ -24,7 +24,7 @@ export default function ServicesPreview() {
 
         <div className="grid grid-cols-1 gap-7 gt640:grid-cols-2 gt900:grid-cols-3">
           {SERVICE_PREVIEWS.map(({ title, blurb, to }) => (
-            <Card key={to}>
+            <Card key={to} className="reveal">
               <Heading as="h3" size="card">
                 {title}
               </Heading>
@@ -33,7 +33,7 @@ export default function ServicesPreview() {
             </Card>
           ))}
 
-          <Card variant="dark" className="flex flex-col justify-center">
+          <Card variant="dark" className="reveal flex flex-col justify-center">
             <Heading as="h3" size="card" className="text-white">
               Not sure where to start?
             </Heading>

@@ -129,7 +129,7 @@ export default function ServiceRow({ id, num, title, lede, tags, open, instant, 
   }, [open, instant])
 
   return (
-    <li id={id} className="group/row scroll-mt-28 border-b border-ink-950/10">
+    <li id={id} className="reveal group/row scroll-mt-28 border-b border-ink-950/10">
       {/* The frame is the window both states travel through, so it clips on
           every side. That would clip the trigger's focus ring too, so the ring
           is drawn on the frame itself instead. */}

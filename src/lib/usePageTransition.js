@@ -10,7 +10,8 @@ const prefersReducedMotion = () =>
   matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /**
- * Returns the location to render (pass it to <Routes location>). A link to a
+ * Returns `location`, the one to render (pass it to <Routes location>), and
+ * `leaving`, true while the current page animates out. A link to a
  * different page keeps the current page on screen while it animates out, then
  * swaps in the new page and animates it in. Anything within the same page — a
  * #section link, the logo on Home, a nav link to the page you are on — passes
@@ -67,5 +68,5 @@ export function usePageTransition(pageRef) {
     }
   }, [phase, pageRef])
 
-  return shown
+  return { location: shown, leaving: phase === 'leaving' }
 }

@@ -156,3 +156,10 @@
     outline-offset: 3px;
   }
 }
+
+/* Scroll reveal (src/lib/reveal.js): a below-the-fold `.reveal` element waits
+   hidden until it scrolls into view. Deliberately unlayered, so it beats any
+   opacity utility on the same element for exactly as long as it is pending. */
+.reveal-pending {
+  opacity: 0;
+}

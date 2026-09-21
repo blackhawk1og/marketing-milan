@@ -27,15 +27,15 @@ export default function Pillars() {
     <Section tone="dark">
       <Container>
         <SectionHead>
-          <Eyebrow>How I think about growth</Eyebrow>
-          <Heading size="lg">Clarity creates positioning.</Heading>
+          <Eyebrow className="reveal">How I think about growth</Eyebrow>
+          <Heading size="lg" className="reveal">Clarity creates positioning.</Heading>
         </SectionHead>
 
         <div className="grid grid-cols-1 gap-7 gt640:grid-cols-2 gt900:grid-cols-3">
           {PILLARS.map(({ title, blurb }) => (
             <div
               key={title}
-              className="rounded-brand-md border border-white/14 bg-white/4 p-8"
+              className="reveal rounded-brand-md border border-white/14 bg-white/4 p-8"
             >
               <Heading as="h3" size="pillar">
                 {title}

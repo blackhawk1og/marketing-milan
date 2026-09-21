@@ -7,12 +7,12 @@ export default function Statement() {
   return (
     <Section tone="ink">
       <div className="mx-auto w-full max-w-[920px] px-gutter text-center">
-        <Heading size="statement">
+        <Heading size="statement" className="reveal">
           Your business doesn&apos;t need more posts.
           <br />
           It needs a better <Accent>digital strategy</Accent>.
         </Heading>
-        <Lede>
+        <Lede className="reveal">
           Growth doesn&apos;t come from noise. It comes from a strategy built
           around your product, your customer, and your goals — then executed
           consistently across the right channels.

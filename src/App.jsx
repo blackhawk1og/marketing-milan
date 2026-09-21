@@ -11,11 +11,11 @@ import Services from './pages/Services'
 export default function App() {
   const pageRef = useRef(null)
   // Routes render the page on screen, which lags the URL while it animates out.
-  const shown = usePageTransition(pageRef)
+  const { location, leaving } = usePageTransition(pageRef)
 
   return (
-    <Routes location={shown}>
-      <Route element={<Layout pageRef={pageRef} />}>
+    <Routes location={location}>
+      <Route element={<Layout pageRef={pageRef} leaving={leaving} />}>
         <Route index element={<Home />} />
         <Route path="services" element={<Services />} />
         <Route path="projects" element={<Projects />} />

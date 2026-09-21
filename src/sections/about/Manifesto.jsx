@@ -45,14 +45,14 @@ export default function Manifesto() {
     <Section tone="ink">
       <Container>
         <SectionHead>
-          <Eyebrow>How I see marketing</Eyebrow>
-          <Heading size="lg">A point of view, not a template.</Heading>
+          <Eyebrow className="reveal">How I see marketing</Eyebrow>
+          <Heading size="lg" className="reveal">A point of view, not a template.</Heading>
         </SectionHead>
 
         {BLOCKS.map(({ index, title, struck, lede }, i) => (
           <div
             key={index}
-            className={`grid grid-cols-1 items-start gap-3.5 py-9 gt720:grid-cols-[0.5fr_1fr] gt720:gap-10 ${
+            className={`reveal grid grid-cols-1 items-start gap-3.5 py-9 gt720:grid-cols-[0.5fr_1fr] gt720:gap-10 ${
               i === BLOCKS.length - 1 ? '' : 'border-b border-white/10'
             }`}
           >
