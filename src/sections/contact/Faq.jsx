@@ -24,7 +24,7 @@ const FAQS = [
 ]
 
 const SUMMARY =
-  "flex cursor-pointer list-none items-center justify-between gap-4 text-[1.02rem] font-bold after:shrink-0 after:text-[1.4rem] after:font-normal after:text-gold-600 after:transition-transform after:duration-200 after:ease-brand after:content-['+'] group-open:after:rotate-45 [&::-webkit-details-marker]:hidden"
+  "flex min-h-11 cursor-pointer list-none items-center justify-between gt640:min-h-auto gap-4 text-[1.02rem] font-bold after:shrink-0 after:text-[1.4rem] after:font-normal after:text-gold-600 after:transition-transform after:duration-200 after:ease-brand after:content-['+'] group-open:after:rotate-45 [&::-webkit-details-marker]:hidden"
 
 export default function Faq() {
   return (

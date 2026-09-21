@@ -4,7 +4,7 @@
  */
 export default function LogoAnimation() {
   return (
-    <div className="mx-auto grid w-full max-w-[360px] place-items-center p-6 gt900:max-w-[440px]">
+    <div className="mx-auto grid w-full max-w-[260px] place-items-center p-6 gt640:max-w-[360px] gt900:max-w-[440px]">
       <div className="relative w-full">
         <svg viewBox="265 255 550 570" className="block h-auto w-full overflow-visible">
           <g className="animate-logo-left">

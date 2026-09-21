@@ -55,6 +55,10 @@
   --breakpoint-gt820: 821px;
   --breakpoint-gt860: 861px;
   --breakpoint-gt900: 901px;
+  /* Not from the mockup: where the header's full nav first fits (it needs
+     ~975px inside the inset pill), rounded up to the usual desktop cut-off.
+     Kept in px like the rest — mixing units breaks Tailwind's variant order. */
+  --breakpoint-gt1023: 1024px;
 
   /* ---------- Shape / motion ---------- */
   --radius-brand-sm: 10px;

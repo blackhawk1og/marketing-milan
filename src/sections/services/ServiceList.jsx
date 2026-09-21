@@ -63,7 +63,7 @@ export default function ServiceList() {
           ))}
         </ul>
 
-        <Button to="/contact" className="mt-10 ml-45">
+        <Button to="/contact" className="mt-10 gt640:ml-45">
           Get started →
         </Button>
       </Container>

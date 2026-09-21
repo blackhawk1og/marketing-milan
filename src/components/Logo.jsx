@@ -7,7 +7,7 @@ export default function Logo({ nameClassName = 'text-forest-950' }) {
       <img
         src={logo}
         alt="Milan Sunuwar Digital Marketing"
-        className="block h-16 w-16 rounded-full object-cover"
+        className="block h-12 w-12 rounded-full object-cover gt640:h-16 gt640:w-16"
       />
       <span className="flex flex-col leading-[1.15]">
         <span className={`font-display text-[1.05rem] font-bold ${nameClassName}`}>

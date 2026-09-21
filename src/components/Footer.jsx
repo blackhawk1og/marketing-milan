@@ -4,7 +4,7 @@ import { FacebookIcon, InstagramIcon, PhoneIcon } from './Icons'
 import { CONTACT, NAV_LINKS, SERVICE_LINKS } from '../data/site'
 
 const COL_LINK =
-  'block py-1.5 text-[0.92rem] transition-colors duration-200 ease-brand hover:text-gold-400'
+  'block min-h-11 py-2.5 gt640:min-h-auto gt640:py-1.5 text-[0.92rem] transition-colors duration-200 ease-brand hover:text-gold-400'
 
 function FooterCol({ title, children }) {
   return (
@@ -34,7 +34,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener"
               aria-label="Instagram"
-              className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
+              className="flex h-11 w-11 items-center gt640:h-[38px] gt640:w-[38px] justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
             >
               <InstagramIcon className="h-4 w-4" />
             </a>
@@ -43,14 +43,14 @@ export default function Footer() {
               target="_blank"
               rel="noopener"
               aria-label="Facebook"
-              className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
+              className="flex h-11 w-11 items-center gt640:h-[38px] gt640:w-[38px] justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
             >
               <FacebookIcon className="h-4 w-4" />
             </a>
             <a
               href={CONTACT.phoneHref}
               aria-label="Phone"
-              className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
+              className="flex h-11 w-11 items-center gt640:h-[38px] gt640:w-[38px] justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
             >
               <PhoneIcon className="h-4 w-4" />
             </a>

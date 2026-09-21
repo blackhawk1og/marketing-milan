@@ -7,7 +7,7 @@ export default function GhostLink({ to, className = '', children }) {
   return (
     <Link
       to={to}
-      className={`inline-block border-b-2 border-gold-500 py-[0.4em] font-bold ${isDarkTone(tone) ? 'text-white' : 'text-forest-900'} ${className}`}
+      className={`inline-block border-b-2 border-gold-500 py-[0.6em] font-bold gt640:py-[0.4em] ${isDarkTone(tone) ? 'text-white' : 'text-forest-900'} ${className}`}
     >
       {children}
     </Link>

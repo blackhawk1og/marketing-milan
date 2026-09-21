@@ -1,5 +1,5 @@
 const BASE =
-  'cursor-pointer rounded-full border-[1.5px] px-[1.3em] py-[0.6em] font-body text-[0.85rem] font-bold transition-all duration-200 ease-brand'
+  'cursor-pointer rounded-full border-[1.5px] px-[1.3em] py-[0.6em] font-body text-[0.85rem] font-bold transition-all duration-200 ease-brand min-h-11 gt640:min-h-auto'
 
 const SELECTED = 'border-forest-950 bg-forest-950 text-white'
 const IDLE =

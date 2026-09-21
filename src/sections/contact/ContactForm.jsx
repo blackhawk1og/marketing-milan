@@ -18,7 +18,7 @@ const CONTROL_IDLE = 'border-b-ink-950/25'
 const CONTROL_INVALID = 'border-b-red-700'
 
 const GROUP_LABEL =
-  'mb-2 block font-body text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink-950'
+  'mb-2 block font-body text-[0.75rem] gt640:text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink-950'
 
 // Rests inside the empty field like a placeholder, then shrinks above it once
 // the field is focused or filled, so the field's name never disappears.
