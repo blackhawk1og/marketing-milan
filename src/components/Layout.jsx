@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
@@ -9,15 +9,22 @@ import Footer from './Footer'
  *
  * `key` changes on every click, even a link to the page you are already on, so
  * that case behaves like a reload too: the logo on Home returns to the top.
+ *
+ * A layout effect, so a newly arrived page is scrolled into place while the
+ * page transition still has it hidden, before its entrance starts. On arrival
+ * the jump is instant; within a page, #links still glide.
  */
 function useHashScroll() {
   const { pathname, hash, key } = useLocation()
+  const lastPathname = useRef(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const arriving = lastPathname.current !== pathname
+    lastPathname.current = pathname
     if (hash) {
       const target = document.getElementById(hash.slice(1))
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        target.scrollIntoView({ behavior: arriving ? 'instant' : 'smooth', block: 'start' })
         return
       }
     }
@@ -25,16 +32,19 @@ function useHashScroll() {
   }, [pathname, hash, key])
 }
 
-export default function Layout() {
+/** `pageRef` is what the page transition moves: the content and footer, not the header. */
+export default function Layout({ pageRef }) {
   useHashScroll()
 
   return (
     <>
       <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <div ref={pageRef}>
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }

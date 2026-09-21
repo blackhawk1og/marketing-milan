@@ -1,5 +1,7 @@
+import { useRef } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
+import { usePageTransition } from './lib/usePageTransition'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Home from './pages/Home'
@@ -7,9 +9,13 @@ import Projects from './pages/Projects'
 import Services from './pages/Services'
 
 export default function App() {
+  const pageRef = useRef(null)
+  // Routes render the page on screen, which lags the URL while it animates out.
+  const shown = usePageTransition(pageRef)
+
   return (
-    <Routes>
-      <Route element={<Layout />}>
+    <Routes location={shown}>
+      <Route element={<Layout pageRef={pageRef} />}>
         <Route index element={<Home />} />
         <Route path="services" element={<Services />} />
         <Route path="projects" element={<Projects />} />
