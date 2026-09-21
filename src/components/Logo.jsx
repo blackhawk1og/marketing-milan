@@ -3,7 +3,7 @@ import logo from '../assets/img/logo.png'
 
 export default function Logo({ nameClassName = 'text-forest-950' }) {
   return (
-    <Link to="/" className="flex shrink-0 items-center gap-3">
+    <Link to="/" className="flex shrink-0 items-center gap-0">
       <img
         src={logo}
         alt="Milan Sunuwar Digital Marketing"

@@ -1,5 +1,4 @@
 import ArrowLink from '../../components/ui/ArrowLink'
-import BadgeNum from '../../components/ui/BadgeNum'
 import Card from '../../components/ui/Card'
 import Container from '../../components/ui/Container'
 import Eyebrow from '../../components/ui/Eyebrow'
@@ -24,11 +23,8 @@ export default function ServicesPreview() {
         </SectionHead>
 
         <div className="grid grid-cols-1 gap-7 gt640:grid-cols-2 gt900:grid-cols-3">
-          {SERVICE_PREVIEWS.map(({ num, title, blurb, to }) => (
-            <Card key={num}>
-              <div className="mb-[18px] flex items-center gap-4">
-                <BadgeNum>{num}</BadgeNum>
-              </div>
+          {SERVICE_PREVIEWS.map(({ title, blurb, to }) => (
+            <Card key={to}>
               <Heading as="h3" size="card">
                 {title}
               </Heading>
