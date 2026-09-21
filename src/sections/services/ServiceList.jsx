@@ -17,10 +17,8 @@ function serviceFromHash(hash) {
 
 export default function ServiceList() {
   const { hash } = useLocation()
-  // One item open at a time: the deep-linked service, else the first.
-  const [openId, setOpenId] = useState(
-    () => serviceFromHash(hash) ?? SERVICE_DETAILS[0].id,
-  )
+  // One item open at a time. All start collapsed unless a deep link names one.
+  const [openId, setOpenId] = useState(() => serviceFromHash(hash))
 
   // Nav/footer links to another service change only the hash while this page
   // stays mounted. Syncing during render (not in an effect) opens the item
