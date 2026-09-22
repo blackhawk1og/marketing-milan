@@ -27,7 +27,6 @@ export default function Pillars() {
     <Section tone="dark">
       <Container>
         <SectionHead>
-          <Eyebrow className="reveal">How I think about growth</Eyebrow>
           <Heading size="lg" className="reveal">Clarity creates positioning.</Heading>
         </SectionHead>
 

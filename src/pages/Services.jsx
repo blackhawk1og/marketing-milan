@@ -19,15 +19,14 @@ export default function Services() {
         alt="Planning a digital marketing strategy"
         blob="none"
       >
-        <Eyebrow>Services</Eyebrow>
         <Heading as="h1" size="display" className="max-w-[640px]">
           Pick a lever.
           <br />
           <Accent>Pull it</Accent> hard.
         </Heading>
         <Lede className="max-w-[640px]">
-          Two focused services. Use one, or combine <br className="hidden gt640:inline" />
-          both — whatever fits your product and your <br className="hidden gt640:inline" />
+          Five focused services. Use one, or combine a <br className="hidden gt640:inline" />
+          few — whatever fits your product and your <br className="hidden gt640:inline" />
           stage of growth.
         </Lede>
       </PageHero>

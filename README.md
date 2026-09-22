@@ -1,6 +1,6 @@
 # Milan Sunuwar — Digital Marketing
 
-A React + Tailwind CSS website for Milan Sunuwar's digital marketing services: social media marketing and SEO.
+A React + Tailwind CSS website for Milan Sunuwar's digital marketing services: social media marketing, SEO, Meta Ads, PPC and email marketing.
 
 ## Tech stack
 

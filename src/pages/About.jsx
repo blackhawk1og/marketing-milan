@@ -2,7 +2,6 @@ import aboutImg from '../assets/img/about.png'
 import Button from '../components/ui/Button'
 import Container from '../components/ui/Container'
 import CtaBanner from '../components/ui/CtaBanner'
-import Eyebrow from '../components/ui/Eyebrow'
 import Heading from '../components/ui/Heading'
 import Lede from '../components/ui/Lede'
 import PageHero from '../components/ui/PageHero'
@@ -16,8 +15,7 @@ export default function About() {
       {/* TODO(content): about.png is a generic stock photo of a businessman, not
           Milan, yet its alt text says "Milan Sunuwar". Replace it with a real
           photo and keep the alt text accurate. */}
-      <PageHero image={aboutImg} alt="Milan Sunuwar" blob="gold">
-        <Eyebrow>About</Eyebrow>
+      <PageHero image={aboutImg} alt="Milan Sunuwar" blob="accent">
         <Heading as="h1" size="xl" className="max-w-[640px]">
           Hi, I&apos;m Milan Sunuwar.
         </Heading>

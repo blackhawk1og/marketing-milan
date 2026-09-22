@@ -9,6 +9,9 @@ export const NAV_LINKS = [
 export const SERVICE_LINKS = [
   { to: '/services#social-media', label: 'Social Media Marketing' },
   { to: '/services#seo', label: 'SEO' },
+  { to: '/services#meta-ads', label: 'Meta Ads' },
+  { to: '/services#ppc', label: 'PPC' },
+  { to: '/services#email-marketing', label: 'Email Marketing' },
 ]
 
 /**
@@ -22,6 +25,9 @@ export const SERVICE_LINKS = [
 export const SERVICE_CHOICES = [
   { value: 'social', label: 'Social Media Marketing' },
   { value: 'seo', label: 'SEO' },
+  { value: 'meta-ads', label: 'Meta Ads' },
+  { value: 'ppc', label: 'PPC' },
+  { value: 'email', label: 'Email Marketing' },
 ]
 
 export const CONTACT = {

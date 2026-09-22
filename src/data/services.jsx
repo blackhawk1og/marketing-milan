@@ -14,6 +14,24 @@ export const SERVICE_PREVIEWS = [
       'Keyword research, on-page improvements and technical fixes that help people already searching find you.',
     to: '/services#seo',
   },
+  {
+    title: 'Meta Ads',
+    blurb:
+      'Facebook & Instagram campaigns built on real audience data and creative testing, not guesswork.',
+    to: '/services#meta-ads',
+  },
+  {
+    title: 'PPC',
+    blurb:
+      'Search campaigns that put you in front of people already looking for what you sell.',
+    to: '/services#ppc',
+  },
+  {
+    title: 'Email Marketing',
+    blurb:
+      'Newsletters and automated flows that turn one-time buyers into repeat customers.',
+    to: '/services#email-marketing',
+  },
 ]
 
 /**
@@ -36,6 +54,27 @@ export const SERVICE_DETAILS = [
     // Review it or replace it with your own wording.
     lede: 'Organic search for people who are already looking for what you offer — the right keywords, pages search engines can understand, and a site worth clicking through to.',
     tags: ['Keyword research', 'On-page SEO', 'Technical audits', 'Link building'],
+  },
+  {
+    id: 'meta-ads',
+    num: '003',
+    title: 'Meta Ads',
+    lede: "Boosting a post isn't a strategy. I set up structured Facebook & Instagram ad campaigns — targeting, creative testing and retargeting — so your budget goes toward people who are actually likely to buy.",
+    tags: ['Audience targeting', 'Creative testing', 'Retargeting', 'Weekly reporting'],
+  },
+  {
+    id: 'ppc',
+    num: '004',
+    title: 'PPC',
+    lede: 'Pay-per-click campaigns for people who are already searching for what you offer — right keyword, right moment, right offer.',
+    tags: ['Keyword research', 'Campaign structure', 'Ad copy', 'Conversion tracking', 'Budget optimization'],
+  },
+  {
+    id: 'email-marketing',
+    num: '005',
+    title: 'Email Marketing',
+    lede: 'Turn one-time buyers into repeat customers with newsletters and automated flows that show up at the right moment.',
+    tags: ['Welcome & cart flows', 'Newsletters', 'List growth', 'Open & click optimization'],
   },
 ]
 

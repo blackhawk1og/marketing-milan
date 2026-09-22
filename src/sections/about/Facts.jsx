@@ -11,8 +11,8 @@ const FACTS = [
     blurb: 'You talk to the person doing the work — no account managers in between.',
   },
   {
-    title: 'Two services, one strategy',
-    blurb: 'Social media marketing and SEO — combined only when it makes sense for you.',
+    title: 'Five services, one strategy',
+    blurb: 'Social, SEO, Ads, PPC and Email — combined only when it makes sense for you.',
   },
 ]
 

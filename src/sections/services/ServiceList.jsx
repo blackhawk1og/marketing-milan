@@ -43,7 +43,7 @@ export default function ServiceList() {
         {/* From gt640 the eyebrow sits in the rows' number column (w-40 + gap-4)
             so it lines up with 001… and the heading lines up with the titles. */}
         <SectionHead className="gt640:flex gt640:items-center gt640:gap-4">
-          <Eyebrow className="reveal shrink-0 gt640:mb-0 gt640:w-40">What I do</Eyebrow>
+          <Eyebrow className="reveal shrink-0 gt640:mb-0 gt640:w-40">What we do</Eyebrow>
           <Heading size="xl" flush className="reveal">
             Our Services
           </Heading>

@@ -10,8 +10,8 @@ const FAQS = [
     a: 'Yes — most of the work happens remotely over calls, email and WhatsApp, so location isn’t a limitation.',
   },
   {
-    q: 'Do I need both services?',
-    a: 'No. Most projects start with the one that matches your current goal, and add the other once that’s working.',
+    q: 'Do I need to use all five services?',
+    a: 'No. Most projects start with one or two services that match your current goal, and expand once that’s working.',
   },
   {
     q: 'How fast can we start?',
@@ -24,14 +24,13 @@ const FAQS = [
 ]
 
 const SUMMARY =
-  "flex min-h-11 cursor-pointer list-none items-center justify-between gt640:min-h-auto gap-4 text-[1.02rem] font-bold after:shrink-0 after:text-[1.4rem] after:font-normal after:text-gold-600 after:transition-transform after:duration-200 after:ease-brand after:content-['+'] group-open:after:rotate-45 [&::-webkit-details-marker]:hidden"
+  "flex min-h-11 cursor-pointer list-none items-center justify-between gt640:min-h-auto gap-4 text-[1.02rem] font-bold after:shrink-0 after:text-[1.4rem] after:font-normal after:text-accent-600 after:transition-transform after:duration-200 after:ease-brand after:content-['+'] group-open:after:rotate-45 [&::-webkit-details-marker]:hidden"
 
 export default function Faq() {
   return (
     <Section className="flow-root pt-0">
       <Container>
         <SectionHead>
-          <Eyebrow className="reveal">Before you reach out</Eyebrow>
           <Heading size="lg" className="reveal">A few common questions.</Heading>
         </SectionHead>
         <div className="max-w-[760px]">

@@ -3,13 +3,13 @@ import { ToneContext } from '../../lib/tone'
 
 /**
  * Shared top block for the Services / Projects / About / Contact pages.
- * `tone` on the media blob picks the gold or green backdrop; `plain` drops it.
+ * `tone` on the media blob picks the accent-green or forest backdrop; `plain` drops it.
  */
 export default function PageHero({ image, alt, blob = 'none', children }) {
   const blobClass =
     blob === 'green'
       ? 'before:bg-[linear-gradient(155deg,#1c5c46,#0a2a1f)]'
-      : 'before:bg-[linear-gradient(155deg,#e6bd6c,#c98a2b)]'
+      : 'before:bg-[linear-gradient(155deg,var(--color-accent-400),var(--color-accent-600))]'
 
   return (
     <ToneContext value="cream">

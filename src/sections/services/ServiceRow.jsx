@@ -135,7 +135,7 @@ export default function ServiceRow({ id, num, title, lede, tags, open, instant, 
           is drawn on the frame itself instead. */}
       <div
         ref={frameRef}
-        className="relative overflow-hidden has-[button:focus-visible]:outline-2 has-[button:focus-visible]:outline-offset-3 has-[button:focus-visible]:outline-gold-500"
+        className="relative overflow-hidden has-[button:focus-visible]:outline-2 has-[button:focus-visible]:outline-offset-3 has-[button:focus-visible]:outline-accent-500"
       >
         {/* z-10 keeps the trigger clickable above the expanded block. */}
         <Heading as="h3" size="lg" flush className="relative z-10">
@@ -148,8 +148,8 @@ export default function ServiceRow({ id, num, title, lede, tags, open, instant, 
             onClick={onToggle}
             className="group flex w-full cursor-pointer items-center gap-4 py-6 text-left focus-visible:outline-none gt640:py-8"
           >
-            {/* gt640:w-40 matches the eyebrow column in ServiceList. */}
-            <span className="w-10 shrink-0 text-[1rem] text-gold-600 tabular-nums gt640:w-40">
+
+            <span className="w-10 shrink-0 text-[1rem] text-accent-600 tabular-nums gt640:w-40">
               {num}
             </span>
             {/* The collapsed state: title, plus (desktop) a preview of the first

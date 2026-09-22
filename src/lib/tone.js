@@ -21,15 +21,15 @@ export const headingTone = (tone) => (isDarkTone(tone) ? 'text-white' : '')
 export const ledeTone = (tone) =>
   isDarkTone(tone) ? 'text-cream-100/72' : 'text-[#12100CAD]'
 
-/** Only `.on-dark` lifted the eyebrow/accent to gold-400 — `.on-ink` did not. */
+/** Both dark tones lift the eyebrow/accent to accent-400; the darker shades are too dim there. */
 export const eyebrowTone = (tone) =>
-  tone === 'dark' ? 'text-gold-400' : 'text-gold-600'
+  isDarkTone(tone) ? 'text-accent-400' : 'text-accent-600'
 
 export const accentTone = (tone) =>
-  tone === 'dark' ? 'text-gold-400' : 'text-gold-500'
+  isDarkTone(tone) ? 'text-accent-400' : 'text-accent-500'
 
 export const badgeTone = (tone) =>
-  isDarkTone(tone) ? 'bg-gold-400' : 'bg-gold-500'
+  isDarkTone(tone) ? 'bg-accent-400' : 'bg-accent-500'
 
 export const tagTone = (tone) =>
   isDarkTone(tone)

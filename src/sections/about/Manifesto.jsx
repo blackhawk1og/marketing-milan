@@ -45,7 +45,6 @@ export default function Manifesto() {
     <Section tone="ink">
       <Container>
         <SectionHead>
-          <Eyebrow className="reveal">How I see marketing</Eyebrow>
           <Heading size="lg" className="reveal">A point of view, not a template.</Heading>
         </SectionHead>
 
@@ -56,7 +55,7 @@ export default function Manifesto() {
               i === BLOCKS.length - 1 ? '' : 'border-b border-white/10'
             }`}
           >
-            <span className="font-display text-[1rem] tracking-[0.1em] text-gold-400">
+            <span className="font-display text-[1rem] tracking-[0.1em] text-accent-400">
               {index}
             </span>
             <div>

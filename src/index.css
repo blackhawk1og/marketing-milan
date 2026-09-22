@@ -2,7 +2,7 @@
 
 /* ===========================================================
    Milan Sunuwar Digital Marketing — Design System
-   Palette: deep forest green + warm gold + cream + ink
+   Palette: deep forest green + fresh green accent + cream + ink
    Type:    Manrope (display/headings) + Plus Jakarta Sans (body/UI)
    =========================================================== */
 
@@ -12,20 +12,26 @@
   --color-forest-900: #0e3a2b;
   --color-forest-800: #154a38;
   --color-forest-700: #1c5c46;
-  --color-gold-600: #c98a2b;
-  --color-gold-500: #d9a441;
-  --color-gold-400: #e6bd6c;
-  --color-gold-100: #f6e8cc;
+
+  --color-accent-600: #137800;
+  --color-accent-500: #259a0e;
+  --color-accent-400: #78cf5c;
+  --color-accent-100: #e1f2d9;
+
   --color-cream-50: #fdfbf6;
   --color-cream-100: #f7f1e4;
   --color-cream-200: #efe6d2;
+
   --color-ink-950: #14130f;
   --color-ink-900: #1a1912;
-  --color-ink-700: #3a382e;
+  --color-ink-700: #3a382e;  
 
   /* ---------- Type ---------- */
-  --font-display: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display:
+    "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body:
+    "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 
   --text-display: clamp(2.6rem, 5.4vw + 1rem, 5rem);
   --text-h-xl: clamp(2.2rem, 3.6vw + 1rem, 3.6rem);
@@ -63,36 +69,84 @@
   /* ---------- Shape / motion ---------- */
   --radius-brand-sm: 10px;
   --radius-brand-md: 18px;
+  --radius-brand: 25px;
   --radius-brand-lg: 28px;
   --ease-brand: cubic-bezier(0.16, 0.8, 0.3, 1);
 
   /* ---------- Hero logo animation (ported from the mockup) ---------- */
-  --animate-logo-left: logoMarkInLeft 7s cubic-bezier(0.16, 0.84, 0.26, 1) infinite;
-  --animate-logo-right: logoMarkInRight 7s cubic-bezier(0.16, 0.84, 0.26, 1) infinite;
-  --animate-logo-arrow: logoArrowReveal 7s cubic-bezier(0.3, 0.7, 0.2, 1) infinite;
+  --animate-logo-left: logoMarkInLeft 7s cubic-bezier(0.16, 0.84, 0.26, 1)
+    infinite;
+  --animate-logo-right: logoMarkInRight 7s cubic-bezier(0.16, 0.84, 0.26, 1)
+    infinite;
+  --animate-logo-arrow: logoArrowReveal 7s cubic-bezier(0.3, 0.7, 0.2, 1)
+    infinite;
   --animate-logo-sheen: logoSheen 7s ease-in-out infinite;
 
   @keyframes logoMarkInLeft {
-    0%   { transform: translate(-90px, 60px) scale(0.96); opacity: 0; }
-    13%  { transform: translate(0, 0) scale(1); opacity: 1; }
-    88%  { transform: translate(0, 0) scale(1); opacity: 1; }
-    100% { transform: translate(-40px, 26px) scale(0.98); opacity: 0; }
+    0% {
+      transform: translate(-90px, 60px) scale(0.96);
+      opacity: 0;
+    }
+    13% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    88% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-40px, 26px) scale(0.98);
+      opacity: 0;
+    }
   }
   @keyframes logoMarkInRight {
-    0%, 6% { transform: translate(90px, -60px) scale(0.96); opacity: 0; }
-    20%    { transform: translate(0, 0) scale(1); opacity: 1; }
-    88%    { transform: translate(0, 0) scale(1); opacity: 1; }
-    100%   { transform: translate(40px, -26px) scale(0.98); opacity: 0; }
+    0%,
+    6% {
+      transform: translate(90px, -60px) scale(0.96);
+      opacity: 0;
+    }
+    20% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    88% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(40px, -26px) scale(0.98);
+      opacity: 0;
+    }
   }
   @keyframes logoArrowReveal {
-    0%, 18% { clip-path: polygon(-50% 150%, 150% 150%, 150% 150%, -50% 150%); opacity: 1; }
-    52%     { clip-path: polygon(-50% -50%, 150% -50%, 150% 150%, -50% 150%); opacity: 1; }
-    88%     { clip-path: polygon(-50% -50%, 150% -50%, 150% 150%, -50% 150%); opacity: 1; }
-    100%    { clip-path: polygon(-50% -50%, 150% -50%, 150% 150%, -50% 150%); opacity: 0; }
+    0%,
+    18% {
+      clip-path: polygon(-50% 150%, 150% 150%, 150% 150%, -50% 150%);
+      opacity: 1;
+    }
+    52% {
+      clip-path: polygon(-50% -50%, 150% -50%, 150% 150%, -50% 150%);
+      opacity: 1;
+    }
+    88% {
+      clip-path: polygon(-50% -50%, 150% -50%, 150% 150%, -50% 150%);
+      opacity: 1;
+    }
+    100% {
+      clip-path: polygon(-50% -50%, 150% -50%, 150% 150%, -50% 150%);
+      opacity: 0;
+    }
   }
   @keyframes logoSheen {
-    0%, 20%   { transform: translate(-140%, 140%); }
-    60%, 100% { transform: translate(140%, -140%); }
+    0%,
+    20% {
+      transform: translate(-140%, 140%);
+    }
+    60%,
+    100% {
+      transform: translate(140%, -140%);
+    }
   }
 
   /* ---------- Contact confirmation toast ----------
@@ -101,24 +155,41 @@
      4.65s + 0.35s total in step with TOAST_DURATION in ContactForm.jsx.
      The `-calm` pair is the same timing without movement, applied through the
      `motion-reduce:` variant. */
-  --animate-toast: toastIn 0.3s var(--ease-brand),
+  --animate-toast:
+    toastIn 0.3s var(--ease-brand),
     toastOut 0.35s var(--ease-brand) 4.65s forwards;
-  --animate-toast-calm: toastFadeIn 0.3s var(--ease-brand),
+  --animate-toast-calm:
+    toastFadeIn 0.3s var(--ease-brand),
     toastFadeOut 0.35s var(--ease-brand) 4.65s forwards;
 
   @keyframes toastIn {
-    from { opacity: 0; transform: translateY(12px) scale(0.98); }
-    to   { opacity: 1; transform: none; }
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
   @keyframes toastOut {
-    to { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
   }
   @keyframes toastFadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   @keyframes toastFadeOut {
-    to { opacity: 0; }
+    to {
+      opacity: 0;
+    }
   }
 
   /* ---------- Invalid-field nudge ----------
@@ -129,11 +200,22 @@
   --animate-nudge: nudge 0.4s var(--ease-brand);
 
   @keyframes nudge {
-    0%, 100% { transform: translateX(0); }
-    20%      { transform: translateX(-5px); }
-    40%      { transform: translateX(5px); }
-    60%      { transform: translateX(-3px); }
-    80%      { transform: translateX(2px); }
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    20% {
+      transform: translateX(-5px);
+    }
+    40% {
+      transform: translateX(5px);
+    }
+    60% {
+      transform: translateX(-3px);
+    }
+    80% {
+      transform: translateX(2px);
+    }
   }
 }
 
@@ -152,7 +234,7 @@
     text-rendering: optimizeLegibility;
   }
   :focus-visible {
-    outline: 2px solid var(--color-gold-500);
+    outline: 2px solid var(--color-accent-500);
     outline-offset: 3px;
   }
 }

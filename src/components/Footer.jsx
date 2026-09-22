@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
-import { FacebookIcon, InstagramIcon, PhoneIcon } from './Icons'
+import { FacebookIcon, InstagramIcon } from './Icons'
+import whatsappIcon from '../assets/Icons/whatsapp.png'
 import { CONTACT, NAV_LINKS, SERVICE_LINKS } from '../data/site'
 
+// Round social buttons: 47px on touch screens, 41px from gt640.
+const SOCIAL =
+  'flex h-[47px] w-[47px] items-center justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-accent-400 hover:text-accent-400 gt640:h-[41px] gt640:w-[41px]'
+
 const COL_LINK =
-  'block min-h-11 py-2.5 gt640:min-h-auto gt640:py-1.5 text-[0.92rem] transition-colors duration-200 ease-brand hover:text-gold-400'
+  'block min-h-11 py-2.5 gt640:min-h-auto gt640:py-1.5 text-[0.92rem] transition-colors duration-200 ease-brand hover:text-accent-400'
 
 function FooterCol({ title, children }) {
   return (
@@ -24,7 +29,7 @@ export default function Footer() {
     <footer className="bg-ink-950 pt-16 text-cream-100/70">
       <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 gap-10 px-gutter pb-12 gt520:grid-cols-2 gt820:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <Logo nameClassName="text-white" />
+          <Logo nameClassName="text-white" taglineClassName="text-accent-400" />
           <p className="mt-3.5 mb-[1em] max-w-[280px] text-[0.92rem] text-pretty">
             Solution that fits to you and your products.
           </p>
@@ -34,7 +39,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener"
               aria-label="Instagram"
-              className="flex h-11 w-11 items-center gt640:h-[38px] gt640:w-[38px] justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
+              className={SOCIAL}
             >
               <InstagramIcon className="h-4 w-4" />
             </a>
@@ -43,16 +48,24 @@ export default function Footer() {
               target="_blank"
               rel="noopener"
               aria-label="Facebook"
-              className="flex h-11 w-11 items-center gt640:h-[38px] gt640:w-[38px] justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
+              className={SOCIAL}
             >
               <FacebookIcon className="h-4 w-4" />
             </a>
             <a
-              href={CONTACT.phoneHref}
-              aria-label="Phone"
-              className="flex h-11 w-11 items-center gt640:h-[38px] gt640:w-[38px] justify-center rounded-full border border-cream-100/20 transition-colors duration-200 ease-brand hover:border-gold-400 hover:text-gold-400"
+              href={CONTACT.whatsapp}
+              target="_blank"
+              rel="noopener"
+              aria-label="WhatsApp"
+              className={SOCIAL}
             >
-              <PhoneIcon className="h-4 w-4" />
+              {/* The PNG is a black glyph; used as a mask it takes the link's
+                  text colour, so it matches the other icons and their hover. */}
+              <span
+                aria-hidden="true"
+                className="h-4 w-4 bg-current [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain]"
+                style={{ maskImage: `url(${whatsappIcon})` }}
+              />
             </a>
           </div>
         </div>

@@ -1,9 +1,9 @@
 /**
  * `categories` drives the filter buttons on the Projects page.
  *
- * TODO(content): these filters still list the former services (Meta Ads, PPC,
- * Email Marketing, Web Development). Kept for now to match the sample projects
- * below; update them to the real service list when real projects go in.
+ * TODO(content): these filters don't match the current services: they still
+ * list Web Development (no longer offered) and have no SEO. Kept for now to
+ * match the sample projects below; update them when real projects go in.
  */
 export const PROJECT_FILTERS = [
   { id: 'all', label: 'All' },
@@ -15,7 +15,7 @@ export const PROJECT_FILTERS = [
 ]
 
 // TODO(content): all six projects are fictional samples: invented business
-// names, blurbs and results, tagged with former services. The Projects page
+// names, blurbs and results, tagged with the old service list. The Projects page
 // labels them as illustrative, but they need replacing with real client work
 // (real names, what was done, and real outcomes).
 export const PROJECTS = [
@@ -32,7 +32,7 @@ export const PROJECTS = [
   {
     initials: 'EF',
     name: 'Everest Fit Studio',
-    gradient: 'linear-gradient(150deg,#c98a2b,#7a5218)',
+    gradient: 'linear-gradient(150deg,#259a0e,#137800)',
     categories: ['web', 'email'],
     tags: ['Web Development', 'Email Marketing'],
     blurb:
@@ -62,7 +62,7 @@ export const PROJECTS = [
   {
     initials: 'UT',
     name: 'Urban Threads Apparel',
-    gradient: 'linear-gradient(150deg,#7a5218,#3a2a0d)',
+    gradient: 'linear-gradient(150deg,#137800,#0a3d00)',
     categories: ['ads', 'email'],
     tags: ['Meta Ads', 'Email Marketing'],
     blurb:
@@ -99,7 +99,7 @@ export const FEATURED_PROJECTS = [
   {
     initials: 'EF',
     name: 'Everest Fit Studio',
-    gradient: 'linear-gradient(150deg,#c98a2b,#7a5218)',
+    gradient: 'linear-gradient(150deg,#259a0e,#137800)',
     tags: ['Web Development'],
     blurb: 'Designed a class-booking landing page paired with a welcome email flow.',
   },

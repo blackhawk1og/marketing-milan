@@ -14,7 +14,6 @@ export default function Projects() {
   return (
     <>
       <PageHero image={projectsImg} alt="Sample of project work" blob="none">
-        <Eyebrow>Selected work</Eyebrow>
         <Heading as="h1" size="display" className="max-w-[640px]">
           Work that
           <br />
@@ -23,7 +22,7 @@ export default function Projects() {
         </Heading>
         <Lede className="max-w-[640px]">
           These are sample projects that illustrate the kind of work and outcomes
-          this approach is built to produce — a mix of services,
+          this approach is built to produce — a mix of the five core services,
           combined differently for each business.
         </Lede>
       </PageHero>

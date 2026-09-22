@@ -13,7 +13,6 @@ export default function FeaturedProjects() {
       <Container>
         <div className="mb-10 flex max-w-none flex-wrap items-end justify-between gap-5">
           <div>
-            <Eyebrow className="reveal">Recent work</Eyebrow>
             {/* TODO(content): this heading presents the cards below as real
                 work, but they are fictional samples (see FEATURED_PROJECTS in
                 src/data/projects.js). Swap in real projects. */}

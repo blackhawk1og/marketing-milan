@@ -2,7 +2,6 @@ import { useState } from 'react'
 import ProjectCard from './ProjectCard'
 import ChoiceChip from '../../components/ui/ChoiceChip'
 import Container from '../../components/ui/Container'
-import NoteBox from '../../components/ui/NoteBox'
 import Section from '../../components/ui/Section'
 import { PROJECTS, PROJECT_FILTERS } from '../../data/projects'
 
@@ -34,11 +33,6 @@ export default function ProjectGrid() {
           ))}
         </div>
 
-        <NoteBox className="reveal mt-12">
-          <strong>Note:</strong> The projects above are illustrative sample work
-          created to show how these services come together — not existing client
-          accounts.
-        </NoteBox>
       </Container>
     </Section>
   )

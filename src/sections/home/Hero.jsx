@@ -9,7 +9,7 @@ import Heading from '../../components/ui/Heading'
 import Lede from '../../components/ui/Lede'
 import Tag from '../../components/ui/Tag'
 
-const TAGS = ['Social Media Marketing', 'SEO']
+const TAGS = ['Social Media Marketing', 'SEO', 'Meta Ads', 'PPC', 'Email Marketing']
 
 export default function Hero() {
   return (
@@ -17,7 +17,6 @@ export default function Hero() {
       <Container>
         <div className="grid items-center gap-12 gt640:grid-cols-[1.2fr_0.8fr]">
           <div>
-            <Eyebrow>Digital marketing, done deliberately</Eyebrow>
             <Heading as="h1" size="display">
               Solution that fits <Accent>to you</Accent> and your products.
             </Heading>
