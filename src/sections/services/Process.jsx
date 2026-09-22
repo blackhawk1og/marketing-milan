@@ -20,7 +20,7 @@ export default function Process() {
               <span className="mb-[0.3em] block font-display text-[2.2rem] font-semibold text-gold-500">
                 {num}
               </span>
-              <h4 className="mb-[0.4em] font-body text-[1.02rem] font-extrabold leading-[1.08] tracking-[-0.01em] text-balance">
+              <h4 className="mb-[0.4em] font-display text-[1.02rem] font-extrabold leading-[1.08] tracking-[-0.01em] text-balance">
                 {title}
               </h4>
               <p className="text-[0.92rem] text-pretty">{blurb}</p>

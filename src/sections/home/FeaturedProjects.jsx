@@ -1,4 +1,5 @@
 import ProjectCard from '../projects/ProjectCard'
+import { ArrowIcon } from '../../components/Icons'
 import Container from '../../components/ui/Container'
 import Eyebrow from '../../components/ui/Eyebrow'
 import GhostLink from '../../components/ui/GhostLink'
@@ -13,11 +14,16 @@ export default function FeaturedProjects() {
         <div className="mb-10 flex max-w-none flex-wrap items-end justify-between gap-5">
           <div>
             <Eyebrow className="reveal">Recent work</Eyebrow>
+            {/* TODO(content): this heading presents the cards below as real
+                work, but they are fictional samples (see FEATURED_PROJECTS in
+                src/data/projects.js). Swap in real projects. */}
             <Heading size="lg" flush className="reveal">
               A few products I&apos;ve helped grow.
             </Heading>
           </div>
-          <GhostLink to="/projects">View all projects →</GhostLink>
+          <GhostLink to="/projects" className="group">
+            View all projects<ArrowIcon className="ml-[0.4em] inline-block align-[-0.05em]" />
+          </GhostLink>
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-7 gt640:grid-cols-2 gt900:grid-cols-3">

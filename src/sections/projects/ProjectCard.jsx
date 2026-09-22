@@ -1,3 +1,4 @@
+import { ArrowIcon } from '../../components/Icons'
 import Chip from '../../components/ui/Chip'
 import Heading from '../../components/ui/Heading'
 
@@ -31,7 +32,9 @@ export default function ProjectCard({
         <p className="text-pretty text-ink-700">{blurb}</p>
         {result && (
           <div className="mt-4 flex items-start gap-[0.5em] border-t border-dashed border-ink-950/16 pt-4 text-[0.88rem] font-bold text-forest-900">
-            <span>↗</span> {result}
+            {/* Pointing up and to the right: a result, not a link, so it doesn't nudge. */}
+            <ArrowIcon nudge={false} className="mt-[0.37em] -rotate-45" />
+            <span>{result}</span>
           </div>
         )}
       </div>

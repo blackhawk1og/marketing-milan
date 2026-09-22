@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from '../../components/ui/Button'
 import ChoiceChip from '../../components/ui/ChoiceChip'
 import { SERVICE_CHOICES } from '../../data/site'
@@ -40,6 +40,12 @@ const EMPTY = {
   services: [],
 }
 
+const GENERIC_ERROR =
+  'Sorry — your message could not be sent just now. Please try again, or email hello@milansunuwar.com directly.'
+
+/** Keep in step with the --animate-toast timing in src/index.css. */
+const TOAST_DURATION = 5000
+
 /** Focus bar that grows along the underline; red while the field is invalid. */
 function FocusBar({ invalid }) {
   return (
@@ -62,7 +68,10 @@ function Nudge({ active, onEnd, children }) {
 
 export default function ContactForm() {
   const [values, setValues] = useState(EMPTY)
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const [errorMessage, setErrorMessage] = useState('')
   const [fieldErrors, setFieldErrors] = useState({})
+  const errorRef = useRef(null)
   // Cleared on animationend rather than keyed off `fieldErrors`: re-applying the
   // same class does not replay a CSS animation, so a second submit with the same
   // errors would otherwise sit still.
@@ -84,8 +93,13 @@ export default function ContactForm() {
     }))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
+    if (status === 'sending') return
+
+    // Read the uncontrolled honeypot before the re-render disables the inputs —
+    // disabled controls are omitted from FormData.
+    const honeypot = new FormData(event.currentTarget).get('company') ?? ''
 
     // Same rules and wording the send endpoint uses, standing in for the
     // browser's native bubble, which `noValidate` switches off.
@@ -93,22 +107,63 @@ export default function ContactForm() {
     if (errors) {
       setFieldErrors(errors)
       setNudging(true)
+      // Field problems are not a send failure, so the red box stays away.
+      setStatus('idle')
       const firstInvalid = FIELD_ORDER.find((field) => errors[field])
       if (firstInvalid) document.getElementById(firstInvalid)?.focus()
       return
     }
 
+    setStatus('sending')
+    setErrorMessage('')
     setFieldErrors({})
-    // Sending is not wired up yet: nothing leaves the page. The existing
-    // endpoint (POST /api/contact, which accepts exactly `values`) is still in
-    // place for when delivery is decided.
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...values, company: honeypot }),
+      })
+      const data = await response.json().catch(() => ({}))
+
+      if (!response.ok || !data.ok) {
+        setFieldErrors(data.errors ?? {})
+        setErrorMessage(data.message || GENERIC_ERROR)
+        setStatus('error')
+        return
+      }
+
+      // Only clear once the message is definitely away — a failed send must not
+      // destroy what the visitor just typed.
+      setValues(EMPTY)
+      setStatus('sent')
+    } catch {
+      setErrorMessage(GENERIC_ERROR)
+      setStatus('error')
+    }
   }
+
+  // The error stays put until dealt with, so bring it into view. The success
+  // toast is fixed to the viewport and needs no scrolling.
+  useEffect(() => {
+    if (status === 'error') errorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [status])
+
+  // Dismiss the toast; its CSS fade-out is timed to end exactly as this fires.
+  useEffect(() => {
+    if (status !== 'sent') return undefined
+    const timer = setTimeout(() => setStatus('idle'), TOAST_DURATION)
+    return () => clearTimeout(timer)
+  }, [status])
+
+  const isSending = status === 'sending'
 
   const fieldProps = (field) => ({
     id: field,
     name: field,
     value: values[field],
     onChange: update,
+    disabled: isSending,
     ...(fieldErrors[field]
       ? { 'aria-invalid': true, 'aria-describedby': `${field}-error` }
       : {}),
@@ -141,58 +196,95 @@ export default function ContactForm() {
   }
 
   return (
-    // `noValidate` suppresses the browser's own validation bubble; the
-    // `required` / `type` attributes stay for screen readers.
-    <form onSubmit={handleSubmit} noValidate>
-      <fieldset className="mb-8 mt-6">
-        <legend className={GROUP_LABEL}>Contact information</legend>
-        <div className="grid grid-cols-1 gap-x-8 gap-y-2 gt520:grid-cols-2">
-          {textField('name', 'Name', { required: true, autoComplete: 'name' })}
-          {textField('email', 'Email', { type: 'email', required: true, autoComplete: 'email' })}
-          {textField('business', 'Business name (optional)', { autoComplete: 'organization' })}
-          {textField('phone', 'Phone (optional)', { type: 'tel', inputMode: 'tel', autoComplete: 'tel' })}
-        </div>
-      </fieldset>
-
-      {/* Multi-select: picking nothing is a valid answer. */}
-      <fieldset className="mb-8">
-        <legend className={GROUP_LABEL}>You&apos;re interested in</legend>
-        <div className="flex flex-wrap gap-2.5">
-          {SERVICE_CHOICES.map(({ value, label }) => (
-            <ChoiceChip
-              key={value}
-              selected={values.services.includes(value)}
-              onClick={() => toggleService(value)}
-            >
-              {label}
-            </ChoiceChip>
-          ))}
-        </div>
-      </fieldset>
-
-      <Nudge active={nudging && Boolean(fieldErrors.message)} onEnd={() => setNudging(false)}>
-        <label htmlFor="message" className={GROUP_LABEL}>
-          About the project
-        </label>
-        <div className="relative">
-          <textarea
-            placeholder="Describe the task"
-            required
-            {...fieldProps('message')}
-            className={`${CONTROL} ${fieldErrors.message ? CONTROL_INVALID : CONTROL_IDLE} block min-h-[120px] resize-y`}
-          />
-          <FocusBar invalid={Boolean(fieldErrors.message)} />
-        </div>
-        {fieldErrors.message && (
-          <p id="message-error" className={ERROR_TEXT}>
-            {fieldErrors.message}
-          </p>
+    <div>
+      {/* The live region stays mounted so screen readers announce the toast
+          when it appears. The wrapper ignores pointer events so it never
+          blocks the page. */}
+      <div
+        role="status"
+        aria-live="polite"
+        className="pointer-events-none fixed right-4 bottom-4 left-4 z-[200] flex justify-center gt520:right-6 gt520:bottom-6 gt520:left-auto gt520:justify-end"
+      >
+        {status === 'sent' && (
+          <div className="pointer-events-auto max-w-[420px] animate-toast rounded-brand-md bg-forest-950 px-[22px] py-5 font-semibold text-cream-100 shadow-[0_20px_45px_-15px_rgba(10,42,31,.55)] motion-reduce:animate-toast-calm">
+            Thanks &mdash; your message has been received. I&apos;ll get back to
+            you within a day.
+          </div>
         )}
-      </Nudge>
+      </div>
 
-      <Button type="submit" variant="ink" block className="mt-6">
-        Submit
-      </Button>
-    </form>
+      {/* Errors stay inline and persistent: they need reading and acting on. */}
+      {status === 'error' && (
+        <div
+          ref={errorRef}
+          role="alert"
+          className="mb-6 border-[1.5px] border-red-700 bg-red-50 px-[22px] py-5 font-semibold text-red-800"
+        >
+          {errorMessage}
+        </div>
+      )}
+
+      {/* `noValidate` suppresses the browser's own validation bubble; the
+          `required` / `type` attributes stay for screen readers. */}
+      <form onSubmit={handleSubmit} noValidate>
+        {/* Honeypot: visually hidden rather than display:none, which some bots
+            skip. A real visitor never focuses or fills this. */}
+        <div className="sr-only" aria-hidden="true">
+          <label htmlFor="company">Company (leave this empty)</label>
+          <input type="text" id="company" name="company" tabIndex={-1} autoComplete="off" defaultValue="" />
+        </div>
+
+        <fieldset className="mb-8 mt-6">
+          <legend className={GROUP_LABEL}>Contact information</legend>
+          <div className="grid grid-cols-1 gap-x-8 gap-y-2 gt520:grid-cols-2">
+            {textField('name', 'Name', { required: true, autoComplete: 'name' })}
+            {textField('email', 'Email', { type: 'email', required: true, autoComplete: 'email' })}
+            {textField('business', 'Business name (optional)', { autoComplete: 'organization' })}
+            {textField('phone', 'Phone (optional)', { type: 'tel', inputMode: 'tel', autoComplete: 'tel' })}
+          </div>
+        </fieldset>
+
+        {/* Multi-select: picking nothing is a valid answer. */}
+        <fieldset className="mb-8">
+          <legend className={GROUP_LABEL}>You&apos;re interested in</legend>
+          <div className="flex flex-wrap gap-2.5">
+            {SERVICE_CHOICES.map(({ value, label }) => (
+              <ChoiceChip
+                key={value}
+                selected={values.services.includes(value)}
+                onClick={() => toggleService(value)}
+                disabled={isSending}
+              >
+                {label}
+              </ChoiceChip>
+            ))}
+          </div>
+        </fieldset>
+
+        <Nudge active={nudging && Boolean(fieldErrors.message)} onEnd={() => setNudging(false)}>
+          <label htmlFor="message" className={GROUP_LABEL}>
+            About the project
+          </label>
+          <div className="relative">
+            <textarea
+              placeholder="Describe the task"
+              required
+              {...fieldProps('message')}
+              className={`${CONTROL} ${fieldErrors.message ? CONTROL_INVALID : CONTROL_IDLE} block min-h-[120px] resize-y`}
+            />
+            <FocusBar invalid={Boolean(fieldErrors.message)} />
+          </div>
+          {fieldErrors.message && (
+            <p id="message-error" className={ERROR_TEXT}>
+              {fieldErrors.message}
+            </p>
+          )}
+        </Nudge>
+
+        <Button type="submit" variant="ink" block className="mt-6" disabled={isSending}>
+          {isSending ? 'Sending…' : 'Submit'}
+        </Button>
+      </form>
+    </div>
   )
 }

@@ -1,4 +1,10 @@
-/** `categories` drives the filter buttons on the Projects page. */
+/**
+ * `categories` drives the filter buttons on the Projects page.
+ *
+ * TODO(content): these filters still list the former services (Meta Ads, PPC,
+ * Email Marketing, Web Development). Kept for now to match the sample projects
+ * below; update them to the real service list when real projects go in.
+ */
 export const PROJECT_FILTERS = [
   { id: 'all', label: 'All' },
   { id: 'social', label: 'Social Media' },
@@ -8,6 +14,10 @@ export const PROJECT_FILTERS = [
   { id: 'web', label: 'Web Development' },
 ]
 
+// TODO(content): all six projects are fictional samples: invented business
+// names, blurbs and results, tagged with former services. The Projects page
+// labels them as illustrative, but they need replacing with real client work
+// (real names, what was done, and real outcomes).
 export const PROJECTS = [
   {
     initials: 'HC',
@@ -71,7 +81,13 @@ export const PROJECTS = [
   },
 ]
 
-/** The three cards featured on the home page use shorter copy and no result line. */
+/**
+ * The three cards featured on the home page use shorter copy and no result line.
+ *
+ * TODO(content): these are three of the fictional samples above, and Home
+ * presents them as real work ("A few products I've helped grow") without the
+ * Projects page's sample note. Replace them with real projects.
+ */
 export const FEATURED_PROJECTS = [
   {
     initials: 'HC',

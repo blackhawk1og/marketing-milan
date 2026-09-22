@@ -1,19 +1,15 @@
 import LogoAnimation from './LogoAnimation'
+import { ArrowIcon } from '../../components/Icons'
 import Accent from '../../components/ui/Accent'
 import Button from '../../components/ui/Button'
 import Container from '../../components/ui/Container'
 import Eyebrow from '../../components/ui/Eyebrow'
+import GhostLink from '../../components/ui/GhostLink'
 import Heading from '../../components/ui/Heading'
 import Lede from '../../components/ui/Lede'
 import Tag from '../../components/ui/Tag'
 
-const TAGS = [
-  'Social Media',
-  'Meta Ads',
-  'PPC',
-  'Email Marketing',
-  'Web Development',
-]
+const TAGS = ['Social Media Marketing', 'SEO']
 
 export default function Hero() {
   return (
@@ -26,15 +22,18 @@ export default function Hero() {
               Solution that fits <Accent>to you</Accent> and your products.
             </Heading>
             <Lede className="max-w-[640px]">
-              Practical digital marketing for businesses that want stronger
-              visibility, better customer trust and consistent growth — without
-              unnecessary complexity.
+              Social media marketing and SEO for growing businesses — content
+              that turns followers into customers, and search work that gets
+              you found by people ready to buy.
             </Lede>
-            <div className="mt-[2em] flex flex-wrap gap-4">
-              <Button to="/services">Explore Services →</Button>
-              <Button to="/contact" variant="outline-dark">
-                Let&apos;s Talk
+            {/* One clear primary action; the secondary is a quiet text link. */}
+            <div className="mt-[2em] flex flex-wrap items-center gap-x-7 gap-y-4">
+              <Button to="/services" className="group">
+                Explore Services <ArrowIcon />
               </Button>
+              <GhostLink to="/contact" className="group">
+                Contact us<ArrowIcon className="ml-[0.4em] inline-block align-[-0.05em]" />
+              </GhostLink>
             </div>
             <div className="mt-[2em] flex flex-wrap gap-2.5">
               {TAGS.map((tag) => (

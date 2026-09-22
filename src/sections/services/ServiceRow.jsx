@@ -138,7 +138,7 @@ export default function ServiceRow({ id, num, title, lede, tags, open, instant, 
         className="relative overflow-hidden has-[button:focus-visible]:outline-2 has-[button:focus-visible]:outline-offset-3 has-[button:focus-visible]:outline-gold-500"
       >
         {/* z-10 keeps the trigger clickable above the expanded block. */}
-        <Heading as="h3" size="md" flush className="relative z-10">
+        <Heading as="h3" size="lg" flush className="relative z-10">
           <button
             ref={headRef}
             type="button"
@@ -152,13 +152,23 @@ export default function ServiceRow({ id, num, title, lede, tags, open, instant, 
             <span className="w-10 shrink-0 text-[1rem] text-gold-600 tabular-nums gt640:w-40">
               {num}
             </span>
+            {/* The collapsed state: title, plus (desktop) a preview of the first
+                categories, which the full list replaces once the row opens. The
+                title never shrinks there, so the preview truncates instead of
+                pushing it onto a second line out of step with its expanded copy. */}
             <span
               ref={titleRef}
-              className={`flex-1 transition-colors duration-[250ms] group-hover:text-forest-700 ${
+              className={`flex min-w-0 flex-1 items-baseline justify-between gap-8 transition-colors duration-[250ms] group-hover:text-forest-700 ${
                 open ? 'opacity-0' : ''
               }`}
             >
-              {title}
+              <span className="gt1023:shrink-0">{title}</span>
+              <span
+                aria-hidden="true"
+                className="hidden min-w-0 truncate font-body text-[0.9rem] font-semibold tracking-normal text-ink-700/65 gt1023:block"
+              >
+                {tags.slice(0, 3).join(' · ')}
+              </span>
             </span>
             <span
               aria-hidden="true"
@@ -193,7 +203,7 @@ export default function ServiceRow({ id, num, title, lede, tags, open, instant, 
             <span className="w-10 shrink-0 gt640:w-40" />
             <Heading
               as="p"
-              size="md"
+              size="lg"
               flush
               className="flex-1 text-forest-900 transition-colors duration-[250ms] group-has-[button:hover]/row:text-forest-700"
             >

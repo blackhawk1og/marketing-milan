@@ -6,7 +6,7 @@ import { revealOnScroll } from '../lib/reveal'
 
 /**
  * The static mockup got this for free from full page loads: land at the top on
- * navigation, jump to the anchor when the URL carries one (e.g. /services#ppc).
+ * navigation, jump to the anchor when the URL carries one (e.g. /services#seo).
  *
  * `key` changes on every click, even a link to the page you are already on, so
  * that case behaves like a reload too: the logo on Home returns to the top.

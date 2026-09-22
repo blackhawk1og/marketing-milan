@@ -1,102 +1,41 @@
 /** Home-page "what I do" cards. */
 export const SERVICE_PREVIEWS = [
   {
-    title: 'Social Media',
+    title: 'Social Media Marketing',
     blurb:
       'Consistent, on-brand content and community management that turns followers into customers.',
     to: '/services#social-media',
   },
   {
-    title: 'Meta Ads',
+    // TODO(content): new placeholder blurb, written when SEO replaced the old
+    // service list. Review it or replace it with your own wording.
+    title: 'SEO',
     blurb:
-      'Facebook & Instagram campaigns built on real audience data and creative testing, not guesswork.',
-    to: '/services#meta-ads',
-  },
-  {
-    title: 'PPC',
-    blurb:
-      'Search campaigns that put you in front of people already looking for what you sell.',
-    to: '/services#ppc',
-  },
-  {
-    title: 'Email Marketing',
-    blurb:
-      'Newsletters and automated flows that turn one-time buyers into repeat customers.',
-    to: '/services#email-marketing',
-  },
-  {
-    title: 'Web Development',
-    blurb:
-      'Fast, mobile-first sites and landing pages built to convert clicks into customers.',
-    to: '/services#web-development',
+      'Keyword research, on-page improvements and technical fixes that help people already searching find you.',
+    to: '/services#seo',
   },
 ]
 
-/** Accordion items on the Services page. `id` is the /services#<id> deep-link target. */
+/**
+ * Accordion items on the Services page. `id` is the /services#<id> deep-link
+ * target. The first few `tags` also preview each service in its collapsed row.
+ */
 export const SERVICE_DETAILS = [
   {
     id: 'social-media',
     num: '001',
-    title: 'Social Media',
+    title: 'Social Media Marketing',
     lede: 'Your feed is often the first real impression of your business. I build a content system — not just random posts — so every post has a job: build trust, show the product, or start a conversation.',
-    tags: [
-      'Content calendar',
-      'Captions & copy',
-      'Design templates',
-      'Community management',
-      'Monthly reporting',
-    ],
+    tags: ['Content strategy', 'Community management', 'Paid social', 'Analytics & reporting'],
   },
   {
-    id: 'meta-ads',
+    id: 'seo',
     num: '002',
-    title: 'Meta Ads',
-    lede: "Boosting a post isn't a strategy. I set up structured Facebook & Instagram ad campaigns — targeting, creative testing and retargeting — so your budget goes toward people who are actually likely to buy.",
-    tags: [
-      'Audience targeting',
-      'Creative testing',
-      'Retargeting',
-      'Weekly reporting',
-    ],
-  },
-  {
-    id: 'ppc',
-    num: '003',
-    title: 'PPC (Search Ads)',
-    lede: 'Pay-per-click campaigns for people who are already searching for what you offer — right keyword, right moment, right offer.',
-    tags: [
-      'Keyword research',
-      'Campaign structure',
-      'Ad copy',
-      'Conversion tracking',
-      'Budget optimization',
-    ],
-  },
-  {
-    id: 'email-marketing',
-    num: '004',
-    title: 'Email Marketing',
-    lede: 'Turn one-time buyers into repeat customers with newsletters and automated flows that show up at the right moment.',
-    tags: [
-      'Welcome & cart flows',
-      'Newsletters',
-      'List growth',
-      'Open & click optimization',
-    ],
-  },
-  {
-    id: 'web-development',
-    num: '005',
-    title: 'Web Development',
-    lede: 'A website that supports the rest of your marketing — fast, clear, and built to convert clicks into customers instead of losing them after the click.',
-    tags: [
-      'Landing pages',
-      'Business websites',
-      'Mobile-first builds',
-      'Conversion-focused layout',
-      'On-page SEO',
-      'Ongoing support',
-    ],
+    title: 'SEO',
+    // TODO(content): new placeholder description, written when SEO was added.
+    // Review it or replace it with your own wording.
+    lede: 'Organic search for people who are already looking for what you offer — the right keywords, pages search engines can understand, and a site worth clicking through to.',
+    tags: ['Keyword research', 'On-page SEO', 'Technical audits', 'Link building'],
   },
 ]
 

@@ -11,8 +11,8 @@ const FACTS = [
     blurb: 'You talk to the person doing the work — no account managers in between.',
   },
   {
-    title: 'Five services, one strategy',
-    blurb: 'Social, Ads, PPC, Email and Web — combined only when it makes sense for you.',
+    title: 'Two services, one strategy',
+    blurb: 'Social media marketing and SEO — combined only when it makes sense for you.',
   },
 ]
 
@@ -26,7 +26,7 @@ export default function Facts() {
               key={title}
               className="reveal rounded-brand-md border border-ink-950/8 bg-cream-100 p-6"
             >
-              <h4 className="mb-[0.4em] font-body text-[0.95rem] font-extrabold leading-[1.08] tracking-[-0.01em] text-balance text-forest-950">
+              <h4 className="mb-[0.4em] font-display text-[0.95rem] font-extrabold leading-[1.08] tracking-[-0.01em] text-balance text-forest-950">
                 {title}
               </h4>
               <p className="text-[0.9rem] text-pretty text-ink-700">{blurb}</p>

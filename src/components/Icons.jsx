@@ -126,3 +126,29 @@ export function MonitorMark({ className = '' }) {
     </svg>
   )
 }
+
+/**
+ * Right arrow for CTAs. Sized in em so it scales with the text it sits beside.
+ * Nudges right when an ancestor with the `group` class is hovered or focused,
+ * unless `nudge` is false (for arrows that aren't part of a link).
+ */
+export function ArrowIcon({ className = '', nudge = true }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 12 12"
+      fill="none"
+      aria-hidden="true"
+      className={`h-[0.85em] w-[0.85em] shrink-0 ${
+        nudge
+          ? 'transition-transform duration-[250ms] ease-brand motion-safe:group-hover:translate-x-[3px] motion-safe:group-focus-visible:translate-x-[3px]'
+          : ''
+      } ${className}`}
+    >
+      <path
+        d="M11.5 6.77417L6.72534 11.5488L5.81468 10.6382L9.03469 7.41817H0.5V6.13017H9.03469L5.81468 2.91017L6.72534 1.99951L11.5 6.77417Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}

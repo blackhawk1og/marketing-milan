@@ -10,8 +10,8 @@ const FAQS = [
     a: 'Yes — most of the work happens remotely over calls, email and WhatsApp, so location isn’t a limitation.',
   },
   {
-    q: 'Do I need to use all five services?',
-    a: 'No. Most projects start with one or two services that match your current goal, and expand once that’s working.',
+    q: 'Do I need both services?',
+    a: 'No. Most projects start with the one that matches your current goal, and add the other once that’s working.',
   },
   {
     q: 'How fast can we start?',

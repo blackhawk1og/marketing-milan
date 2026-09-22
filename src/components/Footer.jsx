@@ -9,7 +9,7 @@ const COL_LINK =
 function FooterCol({ title, children }) {
   return (
     <div>
-      <h4 className="mb-[1.2em] font-body text-[0.78rem] uppercase tracking-[0.1em] text-cream-100/45">
+      <h4 className="mb-[1.2em] font-display text-[0.78rem] uppercase tracking-[0.1em] text-cream-100/45">
         {title}
       </h4>
       {children}

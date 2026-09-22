@@ -14,11 +14,10 @@ export default function ServicesPreview() {
       <Container>
         <SectionHead>
           <Eyebrow className="reveal">What I do</Eyebrow>
-          <Heading size="lg" className="reveal">Five ways to grow, one strategy behind them.</Heading>
+          <Heading size="lg" className="reveal">Two services, one strategy behind them.</Heading>
           <Lede className="reveal">
-            Every service is built to work on its own — or stack together into a
-            system where your ads, content, emails and site all point the same
-            direction.
+            Each works on its own — or together, so your social presence and your
+            search visibility point the same direction.
           </Lede>
         </SectionHead>
 

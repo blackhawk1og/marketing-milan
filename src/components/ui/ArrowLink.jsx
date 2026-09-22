@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ArrowIcon } from '../Icons'
 
 /** `.card-link` — arrow nudges right on parent card hover (see `group` on Card). */
 export default function ArrowLink({ to, className = '', children }) {
@@ -8,16 +9,7 @@ export default function ArrowLink({ to, className = '', children }) {
       className={`mt-1 inline-flex min-h-11 items-center gap-[0.4em] text-[0.9rem] font-bold text-forest-900 gt640:mt-4 gt640:min-h-auto ${className}`}
     >
       {children}
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        aria-hidden="true"
-        className="h-3.5 w-3.5 transition-transform duration-[250ms] ease-brand group-hover:translate-x-1"
-      >
-        <path d="M5 12h14M13 6l6 6-6 6" />
-      </svg>
+      <ArrowIcon />
     </Link>
   )
 }

@@ -23,7 +23,7 @@ export default function Projects() {
         </Heading>
         <Lede className="max-w-[640px]">
           These are sample projects that illustrate the kind of work and outcomes
-          this approach is built to produce — a mix of the five core services,
+          this approach is built to produce — a mix of services,
           combined differently for each business.
         </Lede>
       </PageHero>

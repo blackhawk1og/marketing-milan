@@ -1,6 +1,6 @@
 # Milan Sunuwar — Digital Marketing
 
-A React + Tailwind CSS website for Milan Sunuwar's digital marketing services: social media, Meta ads, PPC, email marketing and web development.
+A React + Tailwind CSS website for Milan Sunuwar's digital marketing services: social media marketing and SEO.
 
 ## Tech stack
 
@@ -15,11 +15,11 @@ Animations use the browser's Web Animations API and `IntersectionObserver`. Ther
 ## Features
 
 - **Five pages:** Home, Services, Projects, About and Contact.
-- **Services accordion:** one item opens at a time, with a two-stage animation where the old state leaves before the new one enters. Links such as `/services#ppc` open and scroll to the matching service.
+- **Services accordion:** one item opens at a time, with a two-stage animation where the old state leaves before the new one enters. Links such as `/services#seo` open and scroll to the matching service.
 - **Page transitions:** a two-stage transition plays between pages; links to the current page don't animate.
 - **Scroll reveals:** headings, text, cards and list items fade in as they scroll into view, once each, staggered within a group.
 - **Projects filter:** filter the sample projects by service.
-- **Contact form:** controlled inputs, service-interest pills and validation shared with the server. The form does not send yet; the `/api/contact` endpoint is in place for when it does.
+- **Contact form:** sends enquiries by email through `/api/contact` (Resend), with validation shared between browser and server, a spam trap, and success and error messages.
 - **Responsive layout:** mobile-first, with a hamburger menu below 1024px.
 - **Reduced motion:** animations are skipped when the visitor's system requests reduced motion.
 

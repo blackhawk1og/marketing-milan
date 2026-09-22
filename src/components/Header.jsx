@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Logo from './Logo'
+import { ArrowIcon } from './Icons'
 import Button from './ui/Button'
 import { NAV_LINKS } from '../data/site'
 
@@ -9,6 +10,14 @@ import { NAV_LINKS } from '../data/site'
 // out of the pill, so the switch sits where it actually fits.
 const NAV_LINK_BASE =
   "relative w-full border-b border-ink-950/6 py-3 text-[0.94rem] font-semibold transition-colors duration-200 ease-brand gt1023:w-auto gt1023:border-b-0 gt1023:py-1"
+
+// Desktop hover underline: a thin gold line, scaled to nothing at rest, that
+// wipes in from the left on hover/focus. The transition lives only on the
+// hover/focus state, so on leave the line simply disappears rather than
+// shrinking back. No link keeps it drawn — the current page is marked by its
+// darker text alone.
+const UNDERLINE =
+  "gt1023:after:absolute gt1023:after:inset-x-0 gt1023:after:-bottom-1 gt1023:after:h-px gt1023:after:bg-gold-500 gt1023:after:content-[''] gt1023:after:origin-left gt1023:after:scale-x-0 gt1023:hover:after:scale-x-100 gt1023:hover:after:transition-transform gt1023:hover:after:duration-300 gt1023:hover:after:ease-brand gt1023:focus-visible:after:scale-x-100 gt1023:focus-visible:after:transition-transform gt1023:focus-visible:after:duration-300 gt1023:focus-visible:after:ease-brand"
 
 // A 44px tap area around a 22px icon, so the icon stays in proportion with
 // the logo instead of filling the whole target.
@@ -38,10 +47,8 @@ export default function Header() {
               end={to === '/'}
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `${NAV_LINK_BASE} ${
-                  isActive
-                    ? "text-forest-950 after:absolute after:-bottom-1 after:right-0 after:left-0 after:h-0.5 after:bg-gold-500 after:content-['']"
-                    : 'text-ink-700 hover:text-forest-950'
+                `${NAV_LINK_BASE} ${UNDERLINE} ${
+                  isActive ? 'text-forest-950' : 'text-ink-700 hover:text-forest-950'
                 }`
               }
             >
@@ -54,7 +61,9 @@ export default function Header() {
           {/* Wrapped rather than given a `hidden` class: Button's own
               `inline-flex` would out-order it in the generated stylesheet. */}
           <div className="hidden gt1023:block">
-            <Button to="/contact">Let&apos;s Talk</Button>
+            <Button to="/contact" className="group">
+              Contact us <ArrowIcon />
+            </Button>
           </div>
           <button
             type="button"

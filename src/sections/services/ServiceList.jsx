@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import ServiceRow from './ServiceRow'
+import { ArrowIcon } from '../../components/Icons'
 import Button from '../../components/ui/Button'
 import Container from '../../components/ui/Container'
 import Eyebrow from '../../components/ui/Eyebrow'
@@ -63,8 +64,8 @@ export default function ServiceList() {
           ))}
         </ul>
 
-        <Button to="/contact" className="mt-10 gt640:ml-45">
-          Get started →
+        <Button to="/contact" className="group mt-10 gt640:ml-45">
+          Get started <ArrowIcon />
         </Button>
       </Container>
     </Section>
