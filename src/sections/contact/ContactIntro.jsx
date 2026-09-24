@@ -50,6 +50,17 @@ export default function ContactIntro() {
           {CONTACT.email}
         </a>
 
+        <p className="mt-7 mb-2 font-body text-[0.75rem] gt640:text-[0.7rem] font-semibold tracking-[0.18em] text-ink-700 uppercase">
+          Phone
+        </p>
+        {/* A step down from the email, which stays the main address. */}
+        <a
+          href={CONTACT.phoneHref}
+          className="flex min-h-11 items-center gt640:inline gt640:min-h-auto font-display text-[clamp(1.1rem,4.4cqw,1.5rem)] leading-[1.1] font-semibold tracking-[-0.01em] text-ink-900 transition-colors duration-[250ms] whitespace-nowrap hover:text-forest-700"
+        >
+          {CONTACT.phone}
+        </a>
+
         <ul className="mt-8 flex list-none gap-3 p-0">
           {LINKS.map(({ href, label, Icon, external }) => (
             <li key={href}>
