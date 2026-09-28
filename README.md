@@ -18,7 +18,6 @@ Animations use the browser's Web Animations API and `IntersectionObserver`. Ther
 - **Services accordion:** one item opens at a time, with a two-stage animation where the old state leaves before the new one enters. Links such as `/services#seo` open and scroll to the matching service.
 - **Page transitions:** a two-stage transition plays between pages; links to the current page don't animate.
 - **Scroll reveals:** headings, text, cards and list items fade in as they scroll into view, once each, staggered within a group.
-- **Projects filter:** filter the sample projects by service.
 - **Contact form:** sends enquiries by email through `/api/contact` (Resend), with validation shared between browser and server, a spam trap, and success and error messages.
 - **Responsive layout:** mobile-first, with a hamburger menu below 1024px.
 - **Reduced motion:** animations are skipped when the visitor's system requests reduced motion.
@@ -71,7 +70,7 @@ src/
   sections/           Page sections, grouped by page (home, services, …)
   components/         Header, footer, layout, logo, icons
     ui/               Shared building blocks: Button, Heading, Card, …
-  data/               Site content: services, projects, nav and contact details
+  data/               Site content: services, nav and contact details
   lib/                Hooks and helpers: page transitions, scroll reveals,
                       contact validation
   assets/img/         Images

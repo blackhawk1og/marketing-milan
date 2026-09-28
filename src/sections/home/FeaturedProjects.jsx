@@ -1,11 +1,7 @@
-import ProjectCard from '../projects/ProjectCard'
-import { ArrowIcon } from '../../components/Icons'
+import ComingSoon from '../../components/ui/ComingSoon'
 import Container from '../../components/ui/Container'
-import Eyebrow from '../../components/ui/Eyebrow'
-import GhostLink from '../../components/ui/GhostLink'
 import Heading from '../../components/ui/Heading'
 import Section from '../../components/ui/Section'
-import { FEATURED_PROJECTS } from '../../data/projects'
 
 export default function FeaturedProjects() {
   return (
@@ -13,23 +9,15 @@ export default function FeaturedProjects() {
       <Container>
         <div className="mb-10 flex max-w-none flex-wrap items-end justify-between gap-5">
           <div>
-            {/* TODO(content): this heading presents the cards below as real
-                work, but they are fictional samples (see FEATURED_PROJECTS in
-                src/data/projects.js). Swap in real projects. */}
             <Heading size="lg" flush className="reveal">
-              A few products I&apos;ve helped grow.
+              Recent work.
             </Heading>
           </div>
-          <GhostLink to="/projects" className="group">
-            View all projects<ArrowIcon className="ml-[0.4em] inline-block align-[-0.05em]" />
-          </GhostLink>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-7 gt640:grid-cols-2 gt900:grid-cols-3">
-          {FEATURED_PROJECTS.map((project) => (
-            <ProjectCard key={project.initials} {...project} />
-          ))}
-        </div>
+        <ComingSoon className="mt-12">
+          Project write-ups are on the way.
+        </ComingSoon>
       </Container>
     </Section>
   )
