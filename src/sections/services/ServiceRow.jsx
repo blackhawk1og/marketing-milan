@@ -2,18 +2,18 @@ import { useLayoutEffect, useRef } from 'react'
 import Heading from '../../components/ui/Heading'
 import Lede from '../../components/ui/Lede'
 import Tag from '../../components/ui/Tag'
-
-// Sequenced after nixtio.com's services accordion: the outgoing state leaves
-// first, accelerating away; after a short beat the incoming one settles in.
-const EXIT_MS = 200
-const GAP_MS = 50
-const ENTER_MS = 200
+import {
+  ENTER_MS,
+  EXIT_MS,
+  GAP_MS,
+  glide,
+  running,
+  wantsReducedMotion,
+} from '../../lib/accordion'
 
 const REST = { transform: 'none', opacity: 1 }
 const HIDDEN = { transform: 'none', opacity: 0 }
 const shift = (px) => `translateY(${px}px)`
-
-const running = (el, id) => el.getAnimations().filter((a) => a.id === id)
 
 /**
  * Where `el` is on screen right now. Mid-animation that is its animated pose;
@@ -54,18 +54,6 @@ function sequence(outgoing, exitTo, incoming, enterFrom) {
     delay: leaving && !turning ? EXIT_MS + GAP_MS : 0,
     easing: 'ease-out',
     fill: 'backwards', // hold the start pose through the delay
-  })
-}
-
-/** Glides the frame to `to` px over the whole sequence, from wherever it is now. */
-function glide(frame, to) {
-  const from = frame.getBoundingClientRect().height
-  running(frame, 'glide').forEach((a) => a.cancel())
-  frame.style.height = `${to}px`
-  frame.animate([{ height: `${from}px` }, { height: `${to}px` }], {
-    id: 'glide',
-    duration: EXIT_MS + GAP_MS + ENTER_MS,
-    easing: 'ease-in-out',
   })
 }
 
@@ -116,7 +104,7 @@ export default function ServiceRow({ id, num, title, lede, tags, open, instant, 
     const expandedH = panel.offsetHeight
 
     // Jump straight to the resting state (the resting classes are already applied).
-    if (instant || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (instant || wantsReducedMotion()) {
       running(frame, 'glide').forEach((a) => a.cancel())
       running(title, 'swap').forEach((a) => a.cancel())
       running(panel, 'swap').forEach((a) => a.cancel())

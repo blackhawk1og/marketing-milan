@@ -14,22 +14,6 @@ export const SERVICE_LINKS = [
   { to: '/services#email-marketing', label: 'Email Marketing' },
 ]
 
-/**
- * Choices behind the contact form's "How can we help you?" chips. Shared with
- * the send endpoint (api/_lib/), which filters the submitted slugs against this
- * list and maps them to readable labels for the notification email.
- *
- * Selecting none is how a visitor says "not sure" — the email then reads
- * "Not specified".
- */
-export const SERVICE_CHOICES = [
-  { value: 'social', label: 'Social Media Marketing' },
-  { value: 'seo', label: 'SEO' },
-  { value: 'meta-ads', label: 'Meta Ads' },
-  { value: 'ppc', label: 'PPC' },
-  { value: 'email', label: 'Email Marketing' },
-]
-
 export const CONTACT = {
   phone: '+977 982-3058082',
   phoneHref: 'tel:+9779823058082',

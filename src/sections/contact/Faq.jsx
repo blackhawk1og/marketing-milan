@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import FaqItem from './FaqItem'
 import Container from '../../components/ui/Container'
 import Eyebrow from '../../components/ui/Eyebrow'
 import Heading from '../../components/ui/Heading'
@@ -23,10 +25,11 @@ const FAQS = [
   },
 ]
 
-const SUMMARY =
-  "flex min-h-11 cursor-pointer list-none items-center justify-between gt640:min-h-auto gap-4 text-[1.02rem] font-bold after:shrink-0 after:text-[1.4rem] after:font-normal after:text-accent-600 after:transition-transform after:duration-200 after:ease-brand after:content-['+'] group-open:after:rotate-45 [&::-webkit-details-marker]:hidden"
-
 export default function Faq() {
+  // One answer at a time, as on the services page: opening a question closes
+  // whichever was open.
+  const [openId, setOpenId] = useState(null)
+
   return (
     <Section className="flow-root pt-0">
       <Container>
@@ -34,15 +37,21 @@ export default function Faq() {
           <Heading size="lg" className="reveal">A few common questions.</Heading>
         </SectionHead>
         <div className="max-w-[760px]">
-          {FAQS.map(({ q, a }) => (
-            <details
-              key={q}
-              className="reveal group border-b border-ink-950/12 py-[18px]"
-            >
-              <summary className={SUMMARY}>{q}</summary>
-              <p className="mt-3 text-pretty text-ink-700">{a}</p>
-            </details>
-          ))}
+          {FAQS.map(({ q, a }, index) => {
+            const id = `faq-${index + 1}`
+            return (
+              <FaqItem
+                key={q}
+                id={id}
+                question={q}
+                answer={a}
+                open={openId === id}
+                onToggle={() =>
+                  setOpenId((current) => (current === id ? null : id))
+                }
+              />
+            )
+          })}
         </div>
       </Container>
     </Section>
